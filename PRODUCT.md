@@ -30,22 +30,27 @@ Open: the owner will describe what makes Estação Barbabeer different from othe
 - Confirmed: the business name is "Estação Barbabeer".
 - Opening hours (owner, 2026-10-19): Tuesday to Friday 10:00–20:00, Saturday 09:00–18:00, closed Sunday and Monday.
 - Services and prices (owner, 2026-10-19): Corte R$ 40, Barba R$ 40, Corte + barba R$ 70, Corte infantil R$ 40.
+- Service durations (owner, 2026-10-20): Corte 30 min, Barba 30 min, Corte + barba 60 min, Corte infantil 30 min.
 - Address (owner, 2026-10-19): Estrada dos Menezes, 850 - Loja 114, Mutondo, São Gonçalo - RJ.
 - Phone and WhatsApp (owner, 2026-10-19): (21) 96704-7027. Instagram: @estacaobarbabeer.
 - Booking (owner, 2026-10-19): BarberCode on the hero button, WhatsApp everywhere else. The BarberCode page lists Barba, Corte e Barba, Corte de Cabelo Masculino and Corte de Cabelo Infantil.
-- Still not supplied, and not to be invented: photos, ratings, the story of the shop.
-- Site data lives in `CONFIG` at the top of `js/main.js`: booking link, WhatsApp, phone, Instagram, address (which also generates the map), hours, and photos. Prices and service names are edited in `index.html`. Missing data shows as dashed "a preencher" placeholders.
+- Google reviews (owner's listing, read 2026-10-20): average 4,9 from 96 reviews (89×5★, 5×4★, 1×3★, 0×2★, 1×1★). The site quotes 4 five-star reviews verbatim, with names as first name plus first-surname initial (owner's rule): Jacielle S., Daniel P., Fernando S., Arthur F. A fifth 5★ review was left out because it includes a complaint, and quoting only its positive half would misrepresent it. Listing: https://www.google.com/maps?cid=16479059746991049617
+- Facade photo (owner, 2026-10-20): the lit shop sign on the blue storefront, used darkened behind the hero (`assets/fachada.webp`, 1672×941).
+- Gallery media (owner, 2026-10-20): 4 photos of cuts in the shop and 2 vertical videos (one of barbers at work in the salon, one of the drinks fridge and the shop sign), in `assets/galeria/` (photos and video stills as WebP, videos as the owner's MP4s, about 17 MB each).
+- Still not supplied, and not to be invented: the story of the shop.
+- Site data lives in `CONFIG` at the top of `js/main.js`: booking link, WhatsApp, phone, Instagram, address (which also generates the map), and hours. Gallery photos and videos are listed directly in `index.html`. Prices and service names are edited in `index.html`. Missing data shows as dashed "a preencher" placeholders.
 
 ## Brand Commitments
 
 - Name: Estação Barbabeer.
 - Logo (supplied by the owner, 2026-10-19): the site uses `assets/logo-hd.webp` (plus `assets/logo-hd.png` for the favicon and share image), 1032×651 with a transparent background. It is made from the owner's second file, `assets/logo-hd-original.webp`, whose background removal had also erased the white interior; the white was filled back in. The first, smaller file is kept as `assets/logo-original.png`. It is a red seal with a navy ribbon reading "ESTAÇÃO BARBABEER", plus clippers, a mustache, scissors, stars and "BARBER SHOP". The site palette comes from it: navy #2a2061, red #b0130f, white.
 - Binding reference (owner's request): https://barbeariagallo.com.br/. Follow its structure and energy (drenched brand-color fields, a giant display headline, a services band, contact, a big WhatsApp call to action), translated into the logo's colors. Do not copy its content or claims.
+- Second binding reference (owner, 2026-10-20): https://www.barbeariaabanca.com.br/ for simplicity (single dark ground, colour as accent, thin lines) and its way of showing reviews (flat numbered cards with a quote mark). The owner kept only the split-flap hours board from the earlier decorative set; pole stripes, red fields, the ribbon plate and the scissors line were removed.
 - No typeface or voice supplied. Do not take brand assets from the earlier project folder.
 
 ## Evidence on Hand
 
-Only the logo has been supplied. Do not invent testimonials, review scores, client counts, years in business, photos or prices. Use clearly marked placeholders until the owner provides real material.
+The logo, the Google reviews and the gallery photos and videos above. Do not invent testimonials, review scores, client counts, years in business, photos or prices. Use clearly marked placeholders until the owner provides real material.
 
 ## Product Principles
 

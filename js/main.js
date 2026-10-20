@@ -18,9 +18,6 @@ const CONFIG = {
   instagram: "estacaobarbabeer",
   // Endereço completo. Também gera o mapa. Ex.: "Rua X, 100 - Centro, Cidade - UF"
   endereco: "Estrada dos Menezes, 850 - Loja 114, Mutondo, São Gonçalo - RJ",
-  // Fotos (coloque os arquivos na pasta assets/). Ordem: corte, fachada, barba, salão.
-  // Ex.: { src: "assets/fachada.jpg", alt: "Fachada da Estação Barbabeer" }
-  fotos: [null, null, null, null],
   // Horários: abre/fecha no formato "09:00". Dia fechado: { fechado: true }.
   // null = ainda não informado.
   horarios: [
@@ -70,6 +67,21 @@ if (CONFIG.whatsapp) {
   });
 }
 
+/* Cartões de serviço: abrem o WhatsApp com o serviço já escrito */
+if (CONFIG.whatsapp) {
+  document.querySelectorAll("[data-service]").forEach((a) => {
+    const msg = `Olá! Quero agendar: ${a.dataset.service}, na Estação Barbabeer.`;
+    a.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+    a.target = "_blank";
+    a.rel = "noopener";
+  });
+}
+
+/* Bilhete usado: ao tocar para agendar, o canhoto se solta (o WhatsApp abre em nova aba) */
+document.querySelectorAll("[data-service]").forEach((a) => {
+  a.addEventListener("click", () => a.closest(".ticket")?.classList.add("is-used"));
+});
+
 /* Contato */
 if (CONFIG.telefone) {
   document.querySelectorAll("[data-phone]").forEach((el) => {
@@ -109,17 +121,24 @@ if (CONFIG.endereco) {
   }
 }
 
-/* Fotos */
-CONFIG.fotos.forEach((foto, i) => {
-  const frame = document.querySelector(`[data-photo="${i}"]`);
-  if (!foto || !frame) return;
-  const img = document.createElement("img");
-  img.src = foto.src;
-  img.alt = foto.alt || "";
-  img.loading = "lazy";
-  frame.replaceChildren(img);
-  frame.classList.add("frame--filled");
-});
+/* Galeria: os vídeos só carregam e tocam (mudos, em loop) enquanto estão na tela.
+   Para quem prefere menos movimento, ficam parados com os controles visíveis. */
+const galleryVideos = document.querySelectorAll(".frame--video video");
+if (reduceMotion || !("IntersectionObserver" in window)) {
+  galleryVideos.forEach((v) => (v.controls = true));
+} else {
+  const vio = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(({ target: v, isIntersecting }) => {
+        // se o navegador bloquear o autoplay, mostra os controles para a pessoa tocar
+        if (isIntersecting) v.play().catch((err) => { if (err.name === "NotAllowedError") v.controls = true; });
+        else v.pause();
+      });
+    },
+    { threshold: 0.35 },
+  );
+  galleryVideos.forEach((v) => vio.observe(v));
+}
 
 /* Quadro de horários (split-flap) */
 const board = document.querySelector("[data-board]");
@@ -199,7 +218,9 @@ if ("IntersectionObserver" in window && !reduceMotion) {
   const riseSelectors = [
     ".field .display",
     ".closing .display",
-    ".svc",
+    ".ticket",
+    ".rating",
+    ".reviews__actions",
     ".services__head p",
     ".services__cta",
     ".board",
@@ -211,7 +232,7 @@ if ("IntersectionObserver" in window && !reduceMotion) {
   ];
   document.querySelectorAll(riseSelectors.join(",")).forEach((el) => el.setAttribute("data-rise", ""));
   // Cartões e fotos entram em cascata
-  document.querySelectorAll(".svc, .frame").forEach((el) => {
+  document.querySelectorAll(".ticket, .frame").forEach((el) => {
     const i = [...el.parentElement.children].indexOf(el);
     el.style.setProperty("--d", `${i * 110}ms`);
   });
@@ -232,12 +253,61 @@ if ("IntersectionObserver" in window && !reduceMotion) {
   document.documentElement.classList.remove("js");
 }
 
+/* Avaliações: como na referência, a seção fica presa na tela e os cartões
+   aparecem um por um conforme a rolagem. Só prende quando tudo cabe na tela;
+   no celular cada cartão aparece ao entrar, um depois do outro. */
+const reviewsSec = document.querySelector(".reviews");
+const reviewCards = [...document.querySelectorAll(".review")];
+if (reviewsSec && reviewCards.length && !reduceMotion && document.documentElement.classList.contains("js")) {
+  const wrap = reviewsSec.querySelector(".reviews__pin > .wrap");
+  const ease = (t) => 1 - Math.pow(1 - t, 3);
+  const show = (el, t) => {
+    const e = ease(Math.min(1, Math.max(0, t)));
+    el.style.opacity = e;
+    el.style.transform = `translateY(${(1 - e) * 34}px) scale(${0.97 + 0.03 * e})`;
+  };
+  let pinned = false;
+  let queued = false;
+  const update = () => {
+    queued = false;
+    if (pinned) {
+      const span = reviewsSec.offsetHeight - innerHeight;
+      const p = Math.min(1, Math.max(0, -reviewsSec.getBoundingClientRect().top / span));
+      // cada cartão ocupa uma fatia da rolagem; o último termina antes de soltar a seção
+      reviewCards.forEach((c, i) => show(c, p * (reviewCards.length + 0.6) - i));
+    } else {
+      reviewCards.forEach((c) => {
+        const top = c.getBoundingClientRect().top;
+        show(c, (innerHeight * 0.95 - top) / (innerHeight * 0.3));
+      });
+    }
+  };
+  const layout = () => {
+    reviewsSec.classList.add("is-pinned");
+    const fits = innerWidth > 760 && wrap.offsetHeight + 40 <= innerHeight;
+    reviewsSec.classList.toggle("is-pinned", fits);
+    pinned = fits;
+    update();
+  };
+  addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener("resize", layout);
+  document.fonts.ready.then(layout);
+  layout();
+}
+
 /* Topo: esconde ao descer, volta ao subir. Botão flutuante some perto do fim. */
 const topbar = document.querySelector("[data-topbar]");
 const floatBtn = document.querySelector(".float-whats");
 const closing = document.querySelector(".closing");
 let lastY = window.scrollY;
 let ticking = false;
+// A logo da barra só aparece depois que a logo grande do início sai de baixo da barra
+const heroLogo = document.querySelector(".hero__logo");
+const syncBrand = () => {
+  const hidden = heroLogo && heroLogo.getBoundingClientRect().bottom > topbar.offsetHeight;
+  topbar.classList.toggle("logo-hidden", Boolean(hidden));
+};
+syncBrand();
 window.addEventListener(
   "scroll",
   () => {
@@ -245,6 +315,7 @@ window.addEventListener(
     ticking = true;
     requestAnimationFrame(() => {
       const y = window.scrollY;
+      syncBrand();
       const menuOpen = toggle.getAttribute("aria-expanded") === "true";
       topbar.classList.toggle("is-hidden", !menuOpen && y > lastY && y > 120);
       const closingTop = closing.getBoundingClientRect().top;
