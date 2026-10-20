@@ -600,7 +600,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 @media (max-width: 760px) {
-  :root { --topbar-h: 3.75rem; }
+  :root { --topbar-h: 3.75rem; --gutter: 1.5rem; }
   .topbar__brand img { height: 2.5rem; }
   .topbar__cta { display: none; }
   .topbar__toggle { margin-left: auto; }

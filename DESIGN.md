@@ -282,7 +282,7 @@ A blue-black ladder with white ink, soft tints for secondary text, and the logo'
 
 ## Layout
 
-The page is a vertical stack of full-width sections on the dark ground. Each section pads its block by the section rhythm (clamp(4.5rem, 10vw, 8rem)) and opens on a 1px hairline. Content sits in a centred wrap of up to 72rem, with a fluid gutter of clamp(1rem, 4vw, 2.5rem) on each side. The order is hero (navy), services (deep), reviews (navy), hours (deep), work (navy), visit (deep), closing (navy), and footer (navy-ink).
+The page is a vertical stack of full-width sections on the dark ground. Each section pads its block by the section rhythm (clamp(4.5rem, 10vw, 8rem)) and opens on a 1px hairline. Content sits in a centred wrap of up to 72rem, with a fluid gutter of clamp(1rem, 4vw, 2.5rem) on each side, fixed at 1.5rem at 760px and below so phone content keeps clear of the screen edge (owner, 2026-10-20). The order is hero (navy), services (deep), reviews (navy), hours (deep), work (navy), visit (deep), closing (navy), and footer (navy-ink).
 
 The hero is a single centred column, at most 60rem wide and up to min(100svh, 60rem) tall. It stacks the logo (min(22rem, 70vw)), the two-line h1 (red lead line over the giant white line), the lede (at most 36rem), and the centred actions.
 
