@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estação Barbabeer · Barber Shop</title>
+  <meta name="description" content="Estação Barbabeer: corte e barba com hora marcada. Agende pelo WhatsApp.">
+  <meta property="og:title" content="Estação Barbabeer · Barber Shop">
+  <meta property="og:description" content="Corte e barba com hora marcada. Agende pelo WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/logo-hd.png">
+  <meta name="theme-color" content="#0a0f22">
+  <link rel="icon" type="image/png" href="assets/logo-hd.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add("js")</script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Ícones desenhados uma vez e reutilizados com <use> -->
+  <svg width="0" height="0" class="sprite" aria-hidden="true">
+    <symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></symbol>
+    <symbol id="i-razor" viewBox="0 0 24 24"><path d="M3 15 15 3l3 3L6 18z"/><path d="M6 18l-2.5 2.5M12 9l3 3"/></symbol>
+    <symbol id="i-mustache" viewBox="0 0 24 24"><path d="M12 11c-1.6-2.4-5-2.6-6.6-.6-1 1.3-2.6 1.6-3.9.6.4 3 3.5 4.6 6.3 3.6 1.9-.7 3.2-1.8 4.2-3.6 1 1.8 2.3 2.9 4.2 3.6 2.8 1 5.9-.6 6.3-3.6-1.3 1-2.9.7-3.9-.6-1.6-2-5-1.8-6.6.6z"/></symbol>
+    <symbol id="i-combo" viewBox="0 0 24 24"><circle cx="6" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/><path d="M8 8.5 21 16M8 15.5 21 8"/></symbol>
+    <symbol id="i-child" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3.5"/><path d="M5.5 21c.6-4 3.1-6.5 6.5-6.5s5.9 2.5 6.5 6.5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h3.5l1.7 4.5-2.2 1.4a11 11 0 0 0 7.1 7.1l1.4-2.2L21 15.5V19a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.3 6.7h.01"/></symbol>
+    <symbol id="i-whats" viewBox="0 0 24 24"><path d="M3.5 20.5 4.8 16A8.5 8.5 0 1 1 8 19.2z"/><path d="M9 8.5c0 3.3 3.2 6.5 6.5 6.5l1-1.6-2-1-1 .9c-1-.5-2-1.5-2.5-2.5l.9-1-1-2z"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4M8.5 14.5l2.2 2.2 4.8-4.7"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  </svg>
+
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topbar" data-topbar>
+    <div class="topbar__inner">
+      <a class="topbar__brand" href="#inicio" aria-label="Estação Barbabeer, início">
+        <img src="assets/logo-hd.webp" alt="" width="1032" height="651">
+      </a>
+      <nav class="topbar__nav" id="menu" aria-label="Principal">
+        <a href="#servicos">Serviços</a>
+        <a href="#horarios">Horários</a>
+        <a href="#trabalho">Nosso trabalho</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <a class="btn btn--red btn--sm topbar__cta" data-whatsapp href="#contato">
+        <svg class="ico"><use href="#i-whats"/></svg>Agendar
+      </a>
+      <button class="topbar__toggle" type="button" aria-controls="menu" aria-expanded="false" data-menu-toggle>
+        <svg class="ico ico--open"><use href="#i-menu"/></svg>
+        <svg class="ico ico--close"><use href="#i-close"/></svg>
+        <span class="sr">Abrir menu</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- HERO: a placa da barbearia, centrada como na referencia -->
+    <section class="hero" id="inicio">
+      <div class="hero__inner">
+        <img class="hero__logo" src="assets/logo-hd.webp" alt="Logo da Estação Barbabeer: barbearia, Barber Shop" width="1032" height="651">
+        <h1 class="hero__title">
+          <span class="plate">Próxima parada:</span>
+          <span class="hero__title-big">seu melhor corte.</span>
+        </h1>
+        <div class="snip" aria-hidden="true"><svg class="scissors" viewBox="0 0 32 32" aria-hidden="true"><g class="blade blade--a"><circle cx="5.5" cy="8.5" r="3.6"/><path d="M8.4 10.6 29 20"/></g><g class="blade blade--b"><circle cx="5.5" cy="23.5" r="3.6"/><path d="M8.4 21.4 29 12"/></g><circle class="pivot" cx="19.9" cy="16" r="1.1"/></svg><span class="snip__line"></span></div>
+        <p class="hero__lede">
+          Barbearia no Mutondo, em São Gonçalo.
+          Combine o seu horário e venha fazer parte da família.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--red btn--shine" data-book href="#contato">
+            <svg class="ico"><use href="#i-calendar"/></svg>Agendar horário
+          </a>
+          <a class="btn btn--ghost" href="#servicos">Ver serviços<svg class="ico"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="pole" aria-hidden="true"></div>
+    </section>
+
+    <!-- Faixa de servicos na fita da logo -->
+    <div class="ribbon" aria-hidden="true">
+      <div class="ribbon__track plate">
+        <span>Corte</span><span>Barba</span><span>Corte + barba</span>
+      </div>
+    </div>
+
+    <!-- SERVIÇOS: cartões com o ícone num selo, como na referencia -->
+    <section class="services field field--red" id="servicos" aria-labelledby="servicos-titulo">
+      <div class="wrap">
+        <div class="services__head">
+          <h2 class="display" id="servicos-titulo" data-echo="Mais que um corte.">Mais que um corte.</h2>
+          <p>Os serviços da casa e seus valores. Ficou com dúvida? Pergunte no WhatsApp.</p>
+        </div>
+        <ul class="svc-grid">
+          <li class="svc">
+            <span class="svc__badge"><svg class="ico"><use href="#i-scissors"/></svg></span>
+            <h3 class="svc__name">Corte</h3>
+            <p class="svc__price">R$ 40</p>
+          </li>
+          <li class="svc">
+            <span class="svc__badge"><svg class="ico"><use href="#i-mustache"/></svg></span>
+            <h3 class="svc__name">Barba</h3>
+            <p class="svc__price">R$ 40</p>
+          </li>
+          <li class="svc">
+            <span class="svc__badge"><svg class="ico"><use href="#i-combo"/></svg></span>
+            <h3 class="svc__name">Corte + barba</h3>
+            <p class="svc__price">R$ 70</p>
+          </li>
+          <li class="svc">
+            <span class="svc__badge"><svg class="ico"><use href="#i-child"/></svg></span>
+            <h3 class="svc__name">Corte infantil</h3>
+            <p class="svc__price">R$ 40</p>
+          </li>
+        </ul>
+        <div class="services__cta">
+          <a class="btn btn--light btn--shine" data-whatsapp href="#contato">
+            <svg class="ico"><use href="#i-whats"/></svg>Escolha seu horário
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HORÁRIOS: o quadro de partidas da Estação -->
+    <section class="timetable field field--navy" id="horarios" aria-labelledby="horarios-titulo">
+      <div class="wrap">
+        <div class="timetable__head">
+          <h2 class="display" id="horarios-titulo" data-echo="Quadro de horários.">Quadro de horários.</h2>
+        </div>
+        <div class="board" data-board>
+          <div class="board__row board__row--head" aria-hidden="true">
+            <span>Dia</span><span>Abre</span><span>Fecha</span>
+          </div>
+          <!-- Edite os horários em js/main.js (CONFIG.horarios) -->
+          <div class="board__body" data-board-body role="table" aria-label="Horários de atendimento"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOSSO TRABALHO: molduras para fotos reais -->
+    <section class="work field field--red" id="trabalho" aria-labelledby="trabalho-titulo">
+      <div class="wrap">
+        <div class="work__head">
+          <h2 class="display" id="trabalho-titulo" data-echo="Nosso trabalho.">Nosso trabalho.</h2>
+          <a class="link" data-instagram href="#contato">
+            <svg class="ico"><use href="#i-insta"/></svg><span data-instagram-label>Siga no Instagram</span>
+          </a>
+        </div>
+        <ul class="work__grid">
+          <li class="frame frame--tall" data-photo="0"><span class="frame__label">Foto: um corte da casa</span></li>
+          <li class="frame" data-photo="1"><span class="frame__label">Foto: a fachada</span></li>
+          <li class="frame" data-photo="2"><span class="frame__label">Foto: uma barba feita</span></li>
+          <li class="frame frame--wide" data-photo="3"><span class="frame__label">Foto: o salão e as cadeiras</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="visit field field--navy" id="contato" aria-labelledby="contato-titulo">
+      <div class="wrap visit__grid">
+        <div class="visit__info">
+          <h2 class="display" id="contato-titulo" data-echo="Venha nos visitar.">Venha nos visitar.</h2>
+          <ul class="facts">
+            <li>
+              <svg class="ico"><use href="#i-pin"/></svg>
+              <div><strong>Endereço</strong><span class="tbd" data-address>Rua, número, bairro, cidade</span></div>
+            </li>
+            <li>
+              <svg class="ico"><use href="#i-phone"/></svg>
+              <div><strong>Telefone e WhatsApp</strong><span class="tbd" data-phone>(00) 00000-0000</span></div>
+            </li>
+            <li>
+              <svg class="ico"><use href="#i-insta"/></svg>
+              <div><strong>Instagram</strong><span class="tbd" data-instagram-handle>@perfil</span></div>
+            </li>
+          </ul>
+        </div>
+        <div class="visit__map" data-map>
+          <div class="map-empty">
+            <svg class="ico"><use href="#i-pin"/></svg>
+            <p>O mapa aparece aqui quando o endereço for preenchido.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAMADA FINAL -->
+    <section class="closing" aria-labelledby="final-titulo">
+      <div class="pole pole--top" aria-hidden="true"></div>
+      <div class="wrap closing__inner">
+        <h2 class="display closing__title" id="final-titulo" data-echo="Sua cadeira está esperando.">Sua cadeira está esperando.</h2>
+        <p>Mande uma mensagem no WhatsApp e combine seu horário.</p>
+        <a class="btn btn--light btn--lg" data-whatsapp href="#contato">
+          <svg class="ico"><use href="#i-whats"/></svg>Falar no WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <img src="assets/logo-hd.webp" alt="Estação Barbabeer" width="1032" height="651" loading="lazy">
+      <nav aria-label="Rodapé">
+        <a href="#servicos">Serviços</a>
+        <a href="#horarios">Horários</a>
+        <a href="#trabalho">Nosso trabalho</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <p>© <span data-year></span> Estação Barbabeer. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <a class="float-whats is-away" data-whatsapp href="#contato" aria-label="Agendar pelo WhatsApp">
+    <svg class="ico"><use href="#i-whats"/></svg>
+  </a>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

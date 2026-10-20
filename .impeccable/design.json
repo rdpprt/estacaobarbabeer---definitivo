@@ -1,0 +1,522 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-20T02:00:41.585Z",
+  "title": "Design System: Estação Barbabeer",
+  "extensions": {
+    "colorMeta": {
+      "navy": {
+        "role": "primary",
+        "displayName": "Night Navy",
+        "canonical": "#0a0f22",
+        "tonalRamp": [
+          "#04060f",
+          "#070b19",
+          "#0a0f22",
+          "#131a35",
+          "#18203f",
+          "#2a2061",
+          "#c3cbe6",
+          "#f3f2f8"
+        ]
+      },
+      "red": {
+        "role": "primary",
+        "displayName": "Barber Red",
+        "canonical": "#b0130f",
+        "tonalRamp": [
+          "#3f0706",
+          "#8a0e0b",
+          "#b0130f",
+          "#c41a15",
+          "#de4a40",
+          "#f08a80",
+          "#ffd8d4",
+          "#fff1ef"
+        ]
+      },
+      "logo-navy": {
+        "role": "secondary",
+        "displayName": "Logo Navy",
+        "canonical": "#2a2061"
+      },
+      "red-hover": {
+        "role": "secondary",
+        "displayName": "Pressed Red",
+        "canonical": "#c41a15"
+      },
+      "red-deep": {
+        "role": "secondary",
+        "displayName": "Deep Red",
+        "canonical": "#8a0e0b"
+      },
+      "board-amber": {
+        "role": "tertiary",
+        "displayName": "Departure Amber",
+        "canonical": "#f0b429"
+      },
+      "navy-deep": {
+        "role": "neutral",
+        "displayName": "Navy Deep",
+        "canonical": "#070b19"
+      },
+      "navy-ink": {
+        "role": "neutral",
+        "displayName": "Navy Ink",
+        "canonical": "#04060f"
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#ffffff"
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Station Paper",
+        "canonical": "#f3f2f8"
+      },
+      "on-navy-soft": {
+        "role": "neutral",
+        "displayName": "Navy Mist",
+        "canonical": "#c3cbe6"
+      },
+      "on-red-soft": {
+        "role": "neutral",
+        "displayName": "Blush",
+        "canonical": "#ffd8d4"
+      },
+      "flap-top": {
+        "role": "neutral",
+        "displayName": "Flap Navy (upper)",
+        "canonical": "#18203f"
+      },
+      "flap-bottom": {
+        "role": "neutral",
+        "displayName": "Flap Navy (lower)",
+        "canonical": "#131a35"
+      },
+      "flap-closed-top": {
+        "role": "neutral",
+        "displayName": "Closed Flap Wine (upper)",
+        "canonical": "#5a1220"
+      },
+      "flap-closed-bottom": {
+        "role": "neutral",
+        "displayName": "Closed Flap Wine (lower)",
+        "canonical": "#4f0f1b"
+      }
+    },
+    "typographyMeta": {
+      "display-hero": {
+        "displayName": "Display hero",
+        "purpose": "The single giant hero line under the plate. Kingthings Petrock (self-hosted, unmodified TTF), uppercase."
+      },
+      "display": {
+        "displayName": "Display",
+        "purpose": "Section headlines, uppercase, balanced wrap, each with a breathing outlined echo behind it."
+      },
+      "plate-hero": {
+        "displayName": "Plate",
+        "purpose": "Text on the hero ribbon plate."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Service card names; the same face sets card prices (1.6rem, tabular), ribbon items and board day names."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running copy in Archivo at wdth 112 (the Trade Gothic Extended role)."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Hero lede, 36rem max width, wdth 112."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase column heads, fact labels and frame labels, wdth 112."
+      },
+      "nav": {
+        "displayName": "Nav",
+        "purpose": "Topbar links, widened to wdth 125."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Button text, widened to wdth 125."
+      },
+      "flap": {
+        "displayName": "Flap",
+        "purpose": "Split-flap hour characters, narrowed to wdth 70, tabular figures."
+      },
+      "button-mobile": {
+        "displayName": "Button (phone)",
+        "purpose": "At 760px and below buttons drop to wdth 100 and 0.03em so labels stay on one line."
+      }
+    },
+    "shadows": [
+      {
+        "name": "board-drop",
+        "value": "0 30px 60px -30px rgb(0 0 0 / 0.6)",
+        "purpose": "Map panel; 0.7 alpha on the departure board, plus inset 0 2px 0 rgb(255 255 255 / 0.05)."
+      },
+      {
+        "name": "card-drop",
+        "value": "0 24px 50px -28px rgb(0 0 0 / 0.75)",
+        "purpose": "Service card at rest."
+      },
+      {
+        "name": "card-drop-hover",
+        "value": "0 34px 60px -28px rgb(0 0 0 / 0.85)",
+        "purpose": "Service card on hover, with a 6px lift."
+      },
+      {
+        "name": "badge-rings",
+        "value": "0 0 0 5px #b0130f, 0 0 0 7px rgb(255 255 255 / 0.5), 0 12px 24px -8px rgb(0 0 0 / 0.5)",
+        "purpose": "Service badge: solid red ring, faint white ring, soft drop."
+      },
+      {
+        "name": "button-lift",
+        "value": "0 10px 24px -12px rgb(0 0 0 / 0.6)",
+        "purpose": "Filled red button at rest; light button uses 0 10px 24px -14px rgb(0 0 0 / 0.55)."
+      },
+      {
+        "name": "button-lift-hover",
+        "value": "0 16px 30px -14px rgb(0 0 0 / 0.7)",
+        "purpose": "Red button on hover."
+      },
+      {
+        "name": "flap-tick",
+        "value": "0 2px 3px rgb(0 0 0 / 0.4)",
+        "purpose": "Each split-flap tile."
+      },
+      {
+        "name": "logo-drop",
+        "value": "drop-shadow(0 20px 34px rgb(0 0 0 / 0.5))",
+        "purpose": "filter on the hero logo only."
+      },
+      {
+        "name": "float-button",
+        "value": "0 12px 28px -8px rgb(0 0 0 / 0.55), 0 0 0 3px #ffffff",
+        "purpose": "Mobile floating WhatsApp button with its white ring."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Shared easing for entrances and interactions."
+      },
+      {
+        "name": "js-gate",
+        "value": "<html class=\"js\"> set by an inline head script",
+        "purpose": "Entrance animations arm only when the class is present; the script removes it without IntersectionObserver or under reduced motion, so content shows at rest."
+      },
+      {
+        "name": "logo-in",
+        "value": "1.1s ease-out; opacity 0, scale 0.8, rotate -25deg -> 1, 1, 0",
+        "purpose": "Hero logo entrance, then float."
+      },
+      {
+        "name": "float",
+        "value": "ease-in-out infinite; translateY -8px at 50%",
+        "purpose": "Hero logo (6s, after 1.2s) and service badge icons (4s)."
+      },
+      {
+        "name": "title-in",
+        "value": "1s ease-out; opacity 0, translate 0 40px, scale 1.08 -> rest",
+        "purpose": "Hero title (0.15s delay) and section headlines on scroll (0.9s)."
+      },
+      {
+        "name": "rise",
+        "value": "0.9s ease-out; opacity 0, translate 0 36px -> rest",
+        "purpose": "Cut line (0.35s), lede (0.45s), actions (0.6s), and data-rise blocks on scroll."
+      },
+      {
+        "name": "stagger",
+        "value": "110ms per item",
+        "purpose": "Service cards and photo frames entering in sequence."
+      },
+      {
+        "name": "grow",
+        "value": "1.1s ease-out, 0.5s delay; scaleX 0 -> 1 from the left",
+        "purpose": "Cut-line stitch grows in."
+      },
+      {
+        "name": "snip",
+        "value": "1.4s ease-in-out infinite; blades rotate +/-13deg about 19.9,16",
+        "purpose": "Scissors open and close."
+      },
+      {
+        "name": "reveal",
+        "value": "1.1s ease-out; clip-path inset(0 100% 0 0) -> inset(0)",
+        "purpose": "Photo frames wipe in from the left."
+      },
+      {
+        "name": "scroll-observer",
+        "value": "IntersectionObserver threshold 0.2, rootMargin 0 0 -8% 0; fires once",
+        "purpose": "Adds is-in to data-rise blocks; also triggers the board flip."
+      },
+      {
+        "name": "breathe",
+        "value": "5s ease-in-out infinite; scale 1.045 at 50%",
+        "purpose": "Section title echo outlines."
+      },
+      {
+        "name": "pop",
+        "value": "0.75s ease-out; scale 0, rotate -90deg -> 1.15, 8deg -> 1, 0",
+        "purpose": "Service badges (card delay + 200ms) and contact icons (0/120/240ms)."
+      },
+      {
+        "name": "wiggle",
+        "value": "0.6s ease-out; rotate -14, 10, -6deg",
+        "purpose": "Badge icon on card hover."
+      },
+      {
+        "name": "shine",
+        "value": "4.5s ease-in-out infinite; 100deg sheen sweeps -130% -> 230%",
+        "purpose": ".btn--shine: hero WhatsApp button and services CTA."
+      },
+      {
+        "name": "pulse",
+        "value": "2.2s ease-in-out infinite; scale 1.08 at 50%",
+        "purpose": "Floating WhatsApp button."
+      },
+      {
+        "name": "ripple",
+        "value": "2.2s ease-out infinite; opacity 0.55 -> 0, scale 1 -> 1.9",
+        "purpose": "Red ring emitted by the floating button."
+      },
+      {
+        "name": "flap-flip",
+        "value": "0.6s ease-out, rotateX(-90deg) -> 12deg -> 0, brightness 1.8 -> 1; delay rowIndex*70ms + tileIndex*35ms",
+        "purpose": "Hours board flips in once when it scrolls into view."
+      },
+      {
+        "name": "pole-drift",
+        "value": "2.4s linear infinite, background-position 0 -> 84.85px",
+        "purpose": "Pole-stripe dividers drift sideways seamlessly."
+      },
+      {
+        "name": "card-lift",
+        "value": "translate 0 -6px, 0.45s ease-out",
+        "purpose": "Service card hover."
+      },
+      {
+        "name": "button-lift",
+        "value": "transform 0.35s ease-out; translateY(-2px)",
+        "purpose": "Button hover; active snaps back in 0.08s."
+      },
+      {
+        "name": "topbar-hide",
+        "value": "transform 0.45s ease-out",
+        "purpose": "Topbar slides away on scroll down past 120px, returns on scroll up."
+      },
+      {
+        "name": "menu-wipe",
+        "value": "clip-path 0.45s ease-out",
+        "purpose": "Mobile nav panel reveals top-down."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "@media (prefers-reduced-motion: reduce)",
+        "purpose": "All animations (including pseudo-elements) set to none, transitions 0.01ms, smooth scroll off, data-rise forced visible; JS skips the observer and the flip."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stack",
+        "value": "960px"
+      },
+      {
+        "name": "mobile",
+        "value": "760px"
+      }
+    ],
+    "fontFaces": [
+      {
+        "family": "Kingthings Petrock",
+        "src": "assets/fonts/kingthings-petrock.ttf",
+        "format": "truetype",
+        "weight": 400,
+        "display": "swap",
+        "license": "Kevin King freeware; the EULA at assets/fonts/kingthings-EULA.txt forbids modifying the TTF, so it is served unmodified."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary and Light Buttons (with shine)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Red pill on navy fields; white pill with red text on red fields; the shine variant adds a 4.5s sheen sweep.",
+      "html": "<div style=\"background:#0a0f22;padding:1.5rem\"><a class=\"ds-btn ds-btn--red ds-shine\" href=\"#\">Agendar pelo WhatsApp</a></div><div style=\"background:#b0130f;padding:1.5rem\"><a class=\"ds-btn ds-btn--light ds-shine\" href=\"#\">Falar no WhatsApp</a></div>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; min-height: 3.25rem; padding: 0.8rem 1.5rem; border: 2px solid transparent; border-radius: 999px; font-family: Archivo, system-ui, sans-serif; font-weight: 750; font-size: 1rem; font-variation-settings: 'wdth' 125; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), background-color 0.25s, box-shadow 0.35s cubic-bezier(0.16,1,0.3,1); } .ds-btn:hover { transform: translateY(-2px); } .ds-btn:active { transform: translateY(0); transition-duration: 0.08s; } .ds-btn:focus-visible { outline: 3px solid #ffffff; outline-offset: 3px; } .ds-btn--red { background: #b0130f; color: #ffffff; box-shadow: 0 10px 24px -12px rgb(0 0 0 / 0.6); } .ds-btn--red:hover { background: #c41a15; box-shadow: 0 16px 30px -14px rgb(0 0 0 / 0.7); } .ds-btn--light { background: #ffffff; color: #b0130f; box-shadow: 0 10px 24px -14px rgb(0 0 0 / 0.55); } .ds-btn--light:hover { background: #f3f2f8; } .ds-shine { position: relative; overflow: hidden; isolation: isolate; } .ds-shine::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(100deg, transparent 20%, rgb(255 255 255 / 0.35) 50%, transparent 80%); animation: ds-shine 4.5s ease-in-out infinite; pointer-events: none; } .ds-btn--light.ds-shine::after { background: linear-gradient(100deg, transparent 20%, rgb(176 19 15 / 0.14) 50%, transparent 80%); } @keyframes ds-shine { 0%, 60% { translate: -130% 0; } 100% { translate: 230% 0; } } @media (prefers-reduced-motion: reduce) { .ds-shine::after { animation: none; } }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action on navy: outline pill with a sliding arrow.",
+      "html": "<div style=\"background:#0a0f22;padding:1.5rem\"><a class=\"ds-btn-ghost\" href=\"#\">Ver serviços<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></div>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 0.55rem; min-height: 3.25rem; padding: 0.8rem 1.5rem; border: 2px solid rgb(255 255 255 / 0.55); border-radius: 999px; color: #ffffff; font-family: Archivo, system-ui, sans-serif; font-weight: 750; font-size: 1rem; font-variation-settings: 'wdth' 125; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), background-color 0.25s; } .ds-btn-ghost svg { transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); } .ds-btn-ghost:hover { border-color: #ffffff; background: rgb(255 255 255 / 0.08); transform: translateY(-2px); } .ds-btn-ghost:hover svg { transform: translateX(4px); } .ds-btn-ghost:focus-visible { outline: 3px solid #ffffff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ribbon Plate",
+      "kind": "custom",
+      "refersTo": "plate",
+      "description": "Red band with V-notched ends and a dotted stitch along both long edges.",
+      "html": "<div style=\"background:#0a0f22;padding:1.5rem\"><span class=\"ds-plate\">Próxima parada:</span></div>",
+      "css": ".ds-plate { --notch: 0.7em; position: relative; display: inline-block; padding: 0.28em calc(var(--notch) + 0.55em) 0.22em; background: #b0130f; color: #ffffff; font-family: 'Kingthings Petrock', Georgia, serif; font-size: 2rem; text-transform: uppercase; line-height: 1.05; white-space: nowrap; clip-path: polygon(0 0, 100% 0, calc(100% - var(--notch)) 50%, 100% 100%, 0 100%, var(--notch) 50%); } .ds-plate::before { content: ''; position: absolute; inset: 0.14em calc(var(--notch) * 0.55); border-block: 2px dotted rgb(255 255 255 / 0.75); pointer-events: none; }"
+    },
+    {
+      "name": "Service Card with Badge",
+      "kind": "card",
+      "refersTo": "service-card",
+      "description": "Navy-deep card with a dotted inner stitch; a white icon badge with red and white rings overlaps the top edge, pops in, floats, and wiggles on hover.",
+      "html": "<div style=\"background:#b0130f;padding:4rem 1.5rem 1.5rem\"><div class=\"ds-svc\"><span class=\"ds-svc__badge\"><svg width=\"37\" height=\"37\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"6\" cy=\"6\" r=\"3\"/><circle cx=\"6\" cy=\"18\" r=\"3\"/><path d=\"M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12\"/></svg></span><h3 class=\"ds-svc__name\">Corte</h3><p class=\"ds-svc__price\"><span class=\"ds-tbd\">R$ --</span></p></div></div>",
+      "css": "@font-face { font-family: 'Kingthings Petrock'; src: url('assets/fonts/kingthings-petrock.ttf') format('truetype'); font-weight: 400; font-display: swap; } .ds-svc { position: relative; max-width: 16rem; margin: 0 auto; background: #070b19; color: #ffffff; border-radius: 16px; padding: 3.4rem 1.25rem 1.75rem; text-align: center; display: grid; justify-items: center; gap: 0.6rem; box-shadow: 0 24px 50px -28px rgb(0 0 0 / 0.75); transition: translate 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s cubic-bezier(0.16,1,0.3,1); } .ds-svc::before { content: ''; position: absolute; inset: 0.55rem; border: 2px dotted rgb(255 255 255 / 0.22); border-radius: 11px; pointer-events: none; } .ds-svc:hover { translate: 0 -6px; box-shadow: 0 34px 60px -28px rgb(0 0 0 / 0.85); } .ds-svc__badge { position: absolute; top: 0; left: 50%; translate: -50% -50%; width: 4.75rem; height: 4.75rem; border-radius: 50%; display: grid; place-items: center; background: #ffffff; color: #b0130f; box-shadow: 0 0 0 5px #b0130f, 0 0 0 7px rgb(255 255 255 / 0.5), 0 12px 24px -8px rgb(0 0 0 / 0.5); animation: ds-pop 0.75s cubic-bezier(0.16,1,0.3,1) 0.2s both; } .ds-svc__badge svg { animation: ds-float 4s ease-in-out infinite; } .ds-svc:hover .ds-svc__badge svg { animation: ds-wiggle 0.6s cubic-bezier(0.16,1,0.3,1); } .ds-svc__name { margin: 0; font-family: 'Kingthings Petrock', Georgia, serif; font-weight: 400; text-transform: uppercase; font-size: 1.8rem; line-height: 1.05; } .ds-svc__price { margin: 0.4rem 0 0; font-family: 'Kingthings Petrock', Georgia, serif; font-size: 1.6rem; font-variant-numeric: tabular-nums; } .ds-tbd { display: inline-block; padding: 0 0.35em; border: 1.5px dashed currentColor; border-radius: 4px; opacity: 0.85; line-height: 1.35; } @keyframes ds-pop { 0% { scale: 0; rotate: -90deg; } 70% { scale: 1.15; rotate: 8deg; } 100% { scale: 1; rotate: 0deg; } } @keyframes ds-float { 50% { translate: 0 -8px; } } @keyframes ds-wiggle { 25% { rotate: -14deg; } 50% { rotate: 10deg; } 75% { rotate: -6deg; } } @media (prefers-reduced-motion: reduce) { .ds-svc__badge, .ds-svc__badge svg { animation: none; } .ds-svc { transition-duration: 0.01ms; } }"
+    },
+    {
+      "name": "Title Echo",
+      "kind": "custom",
+      "refersTo": "display",
+      "description": "Section h2 in Kingthings Petrock with a hollow outlined copy offset up and right that breathes; hidden from assistive tech.",
+      "html": "<div style=\"background:#0a0f22;padding:2.5rem 1.5rem\"><h2 class=\"ds-echo\" data-echo=\"Quadro de horários.\">Quadro de horários.</h2></div>",
+      "css": "@font-face { font-family: 'Kingthings Petrock'; src: url('assets/fonts/kingthings-petrock.ttf') format('truetype'); font-weight: 400; font-display: swap; } .ds-echo { position: relative; isolation: isolate; margin: 0; color: #ffffff; font-family: 'Kingthings Petrock', Georgia, serif; font-weight: 400; font-size: 3rem; line-height: 1; letter-spacing: -0.01em; text-transform: uppercase; } .ds-echo::after { content: attr(data-echo); content: attr(data-echo) / ''; position: absolute; inset: 0; z-index: -1; translate: 0.09em -0.11em; color: transparent; -webkit-text-stroke: 1.5px rgb(255 255 255 / 0.32); pointer-events: none; } .ds-echo::after { animation: ds-breathe 5s ease-in-out infinite; } @keyframes ds-breathe { 50% { scale: 1.045; } } @media (prefers-reduced-motion: reduce) { .ds-echo::after { animation: none; } }"
+    },
+    {
+      "name": "Cut Line",
+      "kind": "custom",
+      "refersTo": "snip",
+      "description": "Drawn two-blade scissors that snip (+/-13deg, 1.4s) beside a dotted stitch that grows in from the left.",
+      "html": "<div style=\"background:#0a0f22;padding:1.5rem\"><div class=\"ds-snip\"><svg class=\"ds-scissors\" viewBox=\"0 0 32 32\"><g class=\"ds-blade ds-blade--a\"><circle cx=\"5.5\" cy=\"8.5\" r=\"3.6\"/><path d=\"M8.4 10.6 29 20\"/></g><g class=\"ds-blade ds-blade--b\"><circle cx=\"5.5\" cy=\"23.5\" r=\"3.6\"/><path d=\"M8.4 21.4 29 12\"/></g><circle class=\"ds-pivot\" cx=\"19.9\" cy=\"16\" r=\"1.1\"/></svg><span class=\"ds-snip__line\"></span></div></div>",
+      "css": ".ds-snip { display: flex; align-items: center; gap: 0.6rem; width: min(100%, 34rem); margin-inline: auto; color: #b0130f; } .ds-scissors { width: 2.1rem; height: 2.1rem; flex: none; overflow: visible; } .ds-blade { fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; transform-box: view-box; transform-origin: 19.9px 16px; } .ds-blade--a { animation: ds-snip-a 1.4s ease-in-out infinite; } .ds-blade--b { animation: ds-snip-b 1.4s ease-in-out infinite; } .ds-pivot { fill: #ffffff; } .ds-snip__line { flex: 1; height: 3px; color: rgb(255 255 255 / 0.45); background: radial-gradient(circle, currentColor 1.1px, transparent 1.4px) 0 50% / 8px 3px repeat-x; transform-origin: left; animation: ds-grow 1.1s cubic-bezier(0.16,1,0.3,1) 0.5s both; } @keyframes ds-snip-a { 50% { rotate: 13deg; } } @keyframes ds-snip-b { 50% { rotate: -13deg; } } @keyframes ds-grow { from { scale: 0 1; } } @media (prefers-reduced-motion: reduce) { .ds-blade, .ds-snip__line { animation: none; } }"
+    },
+    {
+      "name": "Curved Red Field",
+      "kind": "custom",
+      "refersTo": "field-red-curved",
+      "description": "Red section rising over the dark band above with one large top-right curve.",
+      "html": "<div class=\"ds-band\">Faixa</div><section class=\"ds-curved\">Serviços</section>",
+      "css": ".ds-band { background: #04060f; color: #ffffff; padding: 1rem 1.5rem calc(1rem + clamp(2.5rem, 7vw, 6rem)); font-family: Archivo, system-ui, sans-serif; } .ds-curved { position: relative; z-index: 1; margin-top: calc(-1 * clamp(2.5rem, 7vw, 6rem)); padding: 3rem 1.5rem; background: #b0130f; color: #ffffff; border-top-right-radius: clamp(2.5rem, 7vw, 6rem); font-family: Archivo, system-ui, sans-serif; }"
+    },
+    {
+      "name": "Pole-Stripe Divider",
+      "kind": "custom",
+      "refersTo": "pole",
+      "description": "Seamless drifting red/white/logo-navy barber-pole band at field edges.",
+      "html": "<div class=\"ds-pole\"></div>",
+      "css": ".ds-pole { height: 1.25rem; background: repeating-linear-gradient(-45deg, #b0130f 0 18px, #ffffff 18px 30px, #2a2061 30px 48px, #ffffff 48px 60px); background-size: 84.85px 100%; animation: ds-pole 2.4s linear infinite; } @keyframes ds-pole { to { background-position: 84.85px 0; } } @media (prefers-reduced-motion: reduce) { .ds-pole { animation: none; } }"
+    },
+    {
+      "name": "Split-Flap Row",
+      "kind": "custom",
+      "refersTo": "flap",
+      "description": "Departure-board row; each time character on its own two-tone flap tile.",
+      "html": "<div class=\"ds-board\"><div class=\"ds-row ds-row--today\"><span class=\"ds-day\">Segunda</span><span class=\"ds-flaps\"><span class=\"ds-flap\">0</span><span class=\"ds-flap\">9</span><span class=\"ds-flap ds-flap--sep\">:</span><span class=\"ds-flap\">0</span><span class=\"ds-flap\">0</span></span><span class=\"ds-flaps\"><span class=\"ds-flap ds-flap--closed\">FECHADO</span></span></div></div>",
+      "css": ".ds-board { background: #04060f; border-radius: 14px; padding: 1rem; box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.05), 0 30px 60px -30px rgb(0 0 0 / 0.7); color: #ffffff; } .ds-row { display: grid; grid-template-columns: minmax(7rem, 1.6fr) 1fr 1fr; gap: 1rem; align-items: center; padding: 0.7rem 1rem; } .ds-row--today { background: rgb(176 19 15 / 0.22); border-radius: 8px; } .ds-day { font-family: 'Kingthings Petrock', Georgia, serif; text-transform: uppercase; font-size: 1.3rem; } .ds-flaps { display: inline-flex; gap: 3px; } .ds-flap { position: relative; display: inline-grid; place-items: center; width: 2rem; height: 2.7rem; background: linear-gradient(#18203f 50%, #131a35 50%); border-radius: 4px; font-family: Archivo, system-ui, sans-serif; font-weight: 750; font-variation-settings: 'wdth' 70; font-size: 1.6rem; font-variant-numeric: tabular-nums; box-shadow: 0 2px 3px rgb(0 0 0 / 0.4); animation: ds-flip 0.6s cubic-bezier(0.16,1,0.3,1) both; } .ds-flap::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgb(0 0 0 / 0.55); } .ds-flap--sep { background: none; box-shadow: none; width: auto; padding-inline: 1px; } .ds-flap--sep::after { display: none; } .ds-flap--closed { width: auto; padding-inline: 0.6rem; color: #ffd8d4; background: linear-gradient(#5a1220 50%, #4f0f1b 50%); font-size: 1rem; letter-spacing: 0.1em; } @keyframes ds-flip { 0% { transform: perspective(300px) rotateX(-90deg); filter: brightness(1.8); } 60% { transform: perspective(300px) rotateX(12deg); } 100% { transform: none; filter: none; } } @media (prefers-reduced-motion: reduce) { .ds-flap { animation: none; } }"
+    },
+    {
+      "name": "Placeholder (tbd)",
+      "kind": "chip",
+      "refersTo": "placeholder-tbd",
+      "description": "Dashed outline marking owner data not yet supplied. Dashed means placeholder and nothing else.",
+      "html": "<p class=\"ds-tbd-wrap\">Barbearia em <span class=\"ds-tbd\">bairro, cidade</span>.</p>",
+      "css": ".ds-tbd-wrap { background: #0a0f22; color: #c3cbe6; padding: 1rem; font-family: Archivo, system-ui, sans-serif; } .ds-tbd { display: inline-block; padding: 0 0.35em; border: 1.5px dashed currentColor; border-radius: 4px; opacity: 0.85; line-height: 1.35; color: #ffffff; }"
+    },
+    {
+      "name": "Top Navigation",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Frosted navy-deep bar; uppercase narrowed links with a red underline wipe.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Serviços</a><a href=\"#\">Horários</a><a href=\"#\">Contato</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 1.75rem; padding: 1.25rem 1.5rem; background: rgb(7 11 25 / 0.92); border-bottom: 1px solid rgb(255 255 255 / 0.08); } .ds-nav a { font-family: Archivo, system-ui, sans-serif; font-weight: 650; font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; font-variation-settings: 'wdth' 125; text-decoration: none; color: #c3cbe6; padding-block: 0.4rem; background: linear-gradient(#b0130f, #b0130f) 0 100% / 0 2px no-repeat; transition: color 0.2s, background-size 0.35s cubic-bezier(0.16,1,0.3,1); } .ds-nav a:hover { color: #ffffff; background-size: 100% 2px; } .ds-nav a:focus-visible { outline: 3px solid #ffffff; outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Photo Frame Placeholder",
+      "kind": "card",
+      "refersTo": "frame-placeholder",
+      "description": "Empty photo slot on the red work field; dashed because the photo is still missing.",
+      "html": "<div style=\"background:#b0130f;padding:1.5rem\"><div class=\"ds-frame\"><span class=\"ds-frame__label\">Foto: a fachada</span></div></div>",
+      "css": ".ds-frame { position: relative; height: 12rem; border-radius: 10px; overflow: hidden; background: repeating-linear-gradient(-45deg, rgb(0 0 0 / 0.08) 0 14px, transparent 14px 28px), #8a0e0b; border: 2px dashed rgb(255 255 255 / 0.4); display: flex; align-items: end; padding: 1rem; } .ds-frame__label { font-family: Archivo, system-ui, sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #ffd8d4; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Station Sign",
+    "overview": "The page is the shop's sign, enlarged until it becomes the layout. Its red, ribbon, and barber pole come from the owner's logo. Its type, centred hero, badge cards, and motion follow the reference site (barbeariagallo.com.br). A blue-black ground and the logo's red fill whole bands of the page from edge to edge, alternating dark and red. The red bands rise over the band above with one large rounded corner. The ribbon becomes a red plate with notched ends. Dotted stitching edges the plates and cards and draws a cut line under the hero headline. The barber pole becomes a striped divider. The \"Estação\" (station) in the name becomes a departure board for the opening hours, where each character sits on its own split-flap tile.\n\nDensity is low and the page is loud. Each section is one solid colour field. Headlines are set at poster size in a vintage display face, in uppercase. Each section headline carries a faint outlined copy of itself behind it. Body copy is a wide grotesk in muted tints of the field colour. Depth is soft and used sparingly: cards, the board, and the map sit on long, diffuse drop shadows. There are no hard offsets and no layered card stacks.\n\nThe page moves, by the owner's request and in the reference's manner. The logo spins in and floats, headlines rise in with a slight zoom, the scissors snip, blocks rise as they scroll into view, badges pop, and the main buttons shine. All entrance motion is opt-in through JavaScript, so content is visible without it, and every animation stops under reduced motion.\n\nThe system is honest about missing data. Any fact the owner has not supplied yet is shown inside a dashed outline. Only placeholders are dashed, so the dashed outline always means \"to be filled in\".",
+    "keyCharacteristics": [
+      "Full-width solid colour fields alternate between a blue-black depth and red, with white ink. Red fields rise over the band above with a large top-right curve.",
+      "Kingthings Petrock for display text, always uppercase and self-hosted. Archivo widened for body (wdth 112), nav, and buttons (wdth 125), and narrowed only for flaps (wdth 70).",
+      "Section headlines carry an outlined echo of themselves, set up and to the right, that slowly breathes.",
+      "A centred hero: logo, red notched plate, giant title, an animated cut line, the lede, and the actions.",
+      "Service cards on navy-deep with a white icon badge that overlaps the card's top edge.",
+      "Dotted lines mean stitching, which is decoration. Dashed lines mean a placeholder, which is data.",
+      "Red, white, and logo-navy pole stripes divide the hero and the closing band.",
+      "Split-flap tiles for times, which flip in once when the board scrolls into view."
+    ],
+    "rules": [
+      {
+        "name": "The Logo Sample Rule",
+        "body": "Barber Red and Logo Navy are the logo's own colours, sampled from the logo artwork. Never shift them. The page grounds are a separate blue-black ladder (navy, navy-deep, navy-ink), and Logo Navy only appears inside the pole stripe.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dark-Red Alternation Rule",
+        "body": "Fields alternate between a navy depth and red. There is no light field on the page.",
+        "section": "colors"
+      },
+      {
+        "name": "The Amber Is Signage Rule",
+        "body": "Departure Amber belongs to the departure board alone, on its column heads. It is never a general accent.",
+        "section": "colors"
+      },
+      {
+        "name": "The Unmodified Font Rule",
+        "body": "Kingthings Petrock is served from the TTF exactly as supplied, at weight 400, always uppercase, and never used for running text. Do not subset, convert, or fake-bold it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Wide Text Rule",
+        "body": "Archivo runs wide: wdth 112 for text, 125 for nav and buttons. Only the flaps go narrow (wdth 70), and only phone buttons step back to 100.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Time Rule",
+        "body": "Prices and times use tabular figures so columns hold still.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tone Before Shadow Rule",
+        "body": "Separate surfaces by a navy step first. Shadows only lift the few objects that sit on a field (cards, board, map, buttons).",
+        "section": "elevation"
+      },
+      {
+        "name": "The Night Map Rule",
+        "body": "The Google map embed cannot be styled, so it runs in night mode through a CSS filter on the iframe: `invert(0.9) hue-rotate(180deg) saturate(0.85) brightness(0.95) contrast(0.95)`. The light map turns dark, and the hue rotation brings the red pin and coloured icons back near their own colours. A page-blue tint was tried and dropped by the owner, because it muted the red pin.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Dotted Is Stitch, Dashed Is Placeholder Rule",
+        "body": "Dotted lines are decoration: the plate edges, the card and map insets, and the cut line, drawn with a radial-gradient dot every 8px. Dashed borders are reserved for missing owner data: the `.tbd` inline outline and the empty photo frame. When data arrives, the dashed outline is removed (the script drops `.tbd`; a filled frame loses its border).",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do fill each section edge to edge with one field colour, alternating a navy depth and red, and put white ink on both.",
+      "Do overlap the band above a curved red field by the curve amount, and pad that band's bottom by the same amount.",
+      "Do set every display use in Kingthings Petrock, uppercase, from the unmodified TTF.",
+      "Do echo each section h2 with `data-echo`, keeping the echo text identical and hidden from assistive tech.",
+      "Do use the notched red plate, with its dotted stitch, for a short sign-like label inside a headline or band.",
+      "Do draw decoration in dotted lines: the 2px dotted stitch inset inside rounded panels, or the cut line.",
+      "Do mark any fact the owner has not supplied with the dashed placeholder, and remove the dash when the real value lands.",
+      "Do use the light (white and red) button on red fields and the red button on navy fields.",
+      "Do set times and prices in tabular figures. Times go on split-flap tiles.",
+      "Do keep entrance motion behind the `js` gate so content is visible without it, and stop all animation under reduced motion."
+    ],
+    "donts": [
+      "Don't use dashed borders for anything except missing data.",
+      "Don't use Departure Amber outside the hours board.",
+      "Don't set Kingthings Petrock in lowercase or for running text, add a faux-bold stroke, or ship a modified font file.",
+      "Don't shift Barber Red or Logo Navy away from the logo samples.",
+      "Don't add hard offset shadows or glows to surfaces. Depth is a navy step or a long, soft drop; the only rings are the service badges' red and white rings and the floating button's white ring."
+    ]
+  }
+}
