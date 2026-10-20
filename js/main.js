@@ -254,8 +254,9 @@ if ("IntersectionObserver" in window && !reduceMotion) {
 }
 
 /* Avaliações: como na referência, a seção fica presa na tela e os cartões
-   aparecem um por um conforme a rolagem. Só prende quando tudo cabe na tela;
-   no celular cada cartão aparece ao entrar, um depois do outro. */
+   aparecem um por um conforme a rolagem. No celular os cartões ficam empilhados
+   no mesmo lugar, como um baralho: cada novo cobre o anterior, que encolhe atrás.
+   Só prende quando tudo cabe na tela; senão cada cartão aparece ao entrar. */
 const reviewsSec = document.querySelector(".reviews");
 const reviewCards = [...document.querySelectorAll(".review")];
 if (reviewsSec && reviewCards.length && !reduceMotion && document.documentElement.classList.contains("js")) {
@@ -266,6 +267,14 @@ if (reviewsSec && reviewCards.length && !reduceMotion && document.documentElemen
     el.style.opacity = e;
     el.style.transform = `translateY(${(1 - e) * 34}px) scale(${0.97 + 0.03 * e})`;
   };
+  // pilha: o cartão de baixo encolhe e sobe um pouco quando o próximo chega
+  const stackBehind = (el, next) => {
+    const e = ease(Math.min(1, Math.max(0, next)));
+    el.style.opacity = 1;
+    el.style.transform = `translateY(${-12 * e}px) scale(${1 - 0.06 * e})`;
+    el.style.filter = `brightness(${1 - 0.35 * e})`;
+  };
+  const stackQuery = matchMedia("(max-width: 760px)");
   let pinned = false;
   let queued = false;
   const update = () => {
@@ -274,9 +283,18 @@ if (reviewsSec && reviewCards.length && !reduceMotion && document.documentElemen
       const span = reviewsSec.offsetHeight - innerHeight;
       const p = Math.min(1, Math.max(0, -reviewsSec.getBoundingClientRect().top / span));
       // cada cartão ocupa uma fatia da rolagem; o último termina antes de soltar a seção
-      reviewCards.forEach((c, i) => show(c, p * (reviewCards.length + 0.6) - i));
+      const step = (i) => p * (reviewCards.length + 0.6) - i;
+      reviewCards.forEach((c, i) => {
+        const nextT = i < reviewCards.length - 1 ? step(i + 1) : 0;
+        if (stackQuery.matches && nextT > 0) stackBehind(c, nextT);
+        else {
+          c.style.filter = "";
+          show(c, step(i));
+        }
+      });
     } else {
       reviewCards.forEach((c) => {
+        c.style.filter = "";
         const top = c.getBoundingClientRect().top;
         show(c, (innerHeight * 0.95 - top) / (innerHeight * 0.3));
       });
@@ -284,7 +302,7 @@ if (reviewsSec && reviewCards.length && !reduceMotion && document.documentElemen
   };
   const layout = () => {
     reviewsSec.classList.add("is-pinned");
-    const fits = innerWidth > 760 && wrap.offsetHeight + 40 <= innerHeight;
+    const fits = wrap.offsetHeight + 40 <= innerHeight;
     reviewsSec.classList.toggle("is-pinned", fits);
     pinned = fits;
     update();

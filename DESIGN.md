@@ -293,7 +293,7 @@ The topbar is fixed at 4.25rem (3.75rem on phones). It hides on scroll down and 
 **Breakpoints:**
 - **≤1100px:** The nav collapses into a clip-path drop-down panel behind a menu toggle. The booking CTA stays visible in the bar.
 - **≤960px:** The visit grid stacks.
-- **≤760px:** The topbar CTA hides. A floating round WhatsApp button appears and hides itself near the top and near the closing section. Hero buttons go full width, button text narrows to wdth 100, and the large button drops to 1rem with 1.25rem side padding. Review cards stack to one column. Tickets stack to one column, the stub narrows to 7rem, the body padding tightens to 1.1rem 1.15rem, and the price drops to 2rem. The gallery goes to 2 columns. Flaps shrink to 1.05 × 1.6rem.
+- **≤760px:** The topbar CTA hides. A floating round WhatsApp button appears and hides itself near the top and near the closing section. Hero buttons go full width, button text narrows to wdth 100, and the large button drops to 1rem with 1.25rem side padding. Review cards stack into a single deck while the section is pinned (one column otherwise). Tickets stack to one column, the stub narrows to 7rem, the body padding tightens to 1.1rem 1.15rem, and the price drops to 2rem. The gallery goes to 2 columns. Flaps shrink to 1.05 × 1.6rem.
 
 ## Elevation & Depth
 
@@ -360,8 +360,9 @@ Two actions close the section: a red "Avaliar no Google" button and a white "Ver
 
 ### Pinned Review Scroll (signature)
 The mechanic is copied from barbeariaabanca.com.br. The section's content is wrapped in `.reviews__pin`, and the script decides on load, on resize, and once fonts are ready whether it fits.
-- **Pinned:** When the viewport is wider than 760px and the content's height + 40px fits in the viewport, the section gets `.is-pinned`. It becomes 250vh tall with no block padding, and the pin is `position: sticky; top: 0`, at least 100vh tall, with the content centred and 1.25rem of block padding. Scroll progress p (0→1 across the section height minus the viewport) drives each card i with t = p × (n + 0.6) − i. The cards appear one by one, and all are fully visible before the section unpins.
-- **Not pinned:** On phones and short screens, each card is scrubbed by its own position, with t = (0.95 × viewport − card top) / (0.3 × viewport).
+- **Pinned:** When the content's height + 40px fits in the viewport, at any width, the section gets `.is-pinned`. It becomes 250vh tall with no block padding, and the pin is `position: sticky; top: 0`, at least 100vh tall, with the content centred and 1.25rem of block padding. Scroll progress p (0→1 across the section height minus the viewport) drives each card i with t = p × (n + 0.6) − i. The cards appear one by one, and all are fully visible before the section unpins.
+- **Pinned deck (≤760px):** On phones the four cards share one grid cell (`grid-area: stack`), and the name line is pushed to the card's bottom so every card in the deck lines up. Each new card slides in over the previous one. As the next card arrives, the one underneath settles back with translateY up to −12px, scale down to 0.94 and brightness down to 0.65, all driven by the next card's eased t. The last card stays on top at full brightness.
+- **Not pinned:** On screens too short for the content, each card is scrubbed by its own position, with t = (0.95 × viewport − card top) / (0.3 × viewport).
 - **Easing:** In both modes, t is clamped to 0–1 and eased with a cubic ease-out (1 − (1 − t)³). It maps to opacity 0→1, translateY 34px→0, and scale 0.97→1, and it follows the scroll in both directions.
 - **Gate:** Cards start hidden only under `.js`. They are not part of the `data-rise` stagger. Under reduced motion the script does not run and the cards are fully visible.
 

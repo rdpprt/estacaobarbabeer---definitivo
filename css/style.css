@@ -385,6 +385,14 @@ ul { margin: 0; padding: 0; list-style: none; }
   padding-block: 1.25rem;
 }
 .reviews.is-pinned .reviews__actions { margin-top: 2rem; }
+/* Celular: os cartoes ficam empilhados na mesma celula da grade (baralho) */
+@media (max-width: 760px) {
+  .reviews.is-pinned .review-grid { grid-template-columns: 1fr; grid-template-areas: "stack"; margin-top: 1.5rem; }
+  .reviews.is-pinned .review { grid-area: stack; }
+  .reviews.is-pinned .review__who { margin-top: auto; }
+  .reviews.is-pinned .reviews__head { gap: 1rem; }
+  .reviews.is-pinned .reviews__actions { margin-top: 1.5rem; }
+}
 
 /* Telas largas: titulo e nota no centro, avaliacoes ao redor (duas de cada lado) */
 @media (min-width: 1100px) {
