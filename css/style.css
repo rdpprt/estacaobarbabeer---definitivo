@@ -385,14 +385,6 @@ ul { margin: 0; padding: 0; list-style: none; }
   padding-block: 1.25rem;
 }
 .reviews.is-pinned .reviews__actions { margin-top: 2rem; }
-/* Celular: os cartoes ficam empilhados na mesma celula da grade (baralho) */
-@media (max-width: 760px) {
-  .reviews.is-pinned .review-grid { grid-template-columns: 1fr; grid-template-areas: "stack"; margin-top: 1.5rem; }
-  .reviews.is-pinned .review { grid-area: stack; }
-  .reviews.is-pinned .review__who { margin-top: auto; }
-  .reviews.is-pinned .reviews__head { gap: 1rem; }
-  .reviews.is-pinned .reviews__actions { margin-top: 1.5rem; }
-}
 
 /* Telas largas: titulo e nota no centro, avaliacoes ao redor (duas de cada lado) */
 @media (min-width: 1100px) {
@@ -620,8 +612,33 @@ ul { margin: 0; padding: 0; list-style: none; }
   .ticket { --stub: 7rem; }
   .ticket__body { padding: 1.1rem 1.15rem; }
   .ticket__price { font-size: 2rem; }
-  .review-grid { grid-template-columns: 1fr; }
-  .review { padding: 1.5rem 1.4rem 1.3rem; }
+  /* Celular: carrossel de deslizar, uma avaliacao por vez */
+  .review-grid {
+    display: flex; gap: 0.75rem; margin-top: 2rem;
+    margin-inline: calc(50% - 50vw); padding: 0.5rem 14vw 1.5rem;
+    overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+  .review-grid::-webkit-scrollbar { display: none; }
+  /* cartao do centro em foco; os vizinhos aparecem nas bordas, desfocados (JS) */
+  .review {
+    flex: 0 0 72vw; scroll-snap-align: center; scroll-snap-stop: always;
+    padding: 1.5rem 1.4rem 1.3rem; will-change: transform, filter;
+  }
+  .carousel-nav:not([hidden]) {
+    display: flex; justify-content: center; margin-top: -0.5rem;
+  }
+  .carousel-nav__dots { display: flex; gap: 0.25rem; }
+  .carousel-nav__dot {
+    width: 1.75rem; height: 2.75rem; border: 0; padding: 0; background: none; cursor: pointer;
+    display: grid; place-items: center;
+  }
+  .carousel-nav__dot::before {
+    content: ""; width: 0.6rem; height: 0.6rem; border-radius: 50%;
+    background: rgb(255 255 255 / 0.35); transition: background 0.25s, transform 0.25s;
+  }
+  .carousel-nav__dot[aria-current="true"]::before { background: var(--star); transform: scale(1.35); }
+  .reviews__actions { margin-top: 1.75rem; }
   .work__grid { grid-template-columns: 1fr 1fr; }
   .float-whats { display: grid; }
   .board__day small { display: block; width: max-content; margin: 0.25rem 0 0; }

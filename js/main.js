@@ -261,40 +261,32 @@ const reviewsSec = document.querySelector(".reviews");
 const reviewCards = [...document.querySelectorAll(".review")];
 if (reviewsSec && reviewCards.length && !reduceMotion && document.documentElement.classList.contains("js")) {
   const wrap = reviewsSec.querySelector(".reviews__pin > .wrap");
+  const grid = reviewsSec.querySelector(".review-grid");
+  const phoneQuery = matchMedia("(max-width: 760px)");
   const ease = (t) => 1 - Math.pow(1 - t, 3);
   const show = (el, t) => {
     const e = ease(Math.min(1, Math.max(0, t)));
     el.style.opacity = e;
     el.style.transform = `translateY(${(1 - e) * 34}px) scale(${0.97 + 0.03 * e})`;
   };
-  // pilha: o cartão de baixo encolhe e sobe um pouco quando o próximo chega
-  const stackBehind = (el, next) => {
-    const e = ease(Math.min(1, Math.max(0, next)));
-    el.style.opacity = 1;
-    el.style.transform = `translateY(${-12 * e}px) scale(${1 - 0.06 * e})`;
-    el.style.filter = `brightness(${1 - 0.35 * e})`;
-  };
-  const stackQuery = matchMedia("(max-width: 760px)");
   let pinned = false;
   let queued = false;
   const update = () => {
     queued = false;
+    if (!pinned && phoneQuery.matches) {
+      // celular: o carrossel inteiro sobe junto; cada cartão fica por conta do carrossel
+      show(grid, (innerHeight * 0.95 - grid.getBoundingClientRect().top) / (innerHeight * 0.3));
+      return;
+    }
+    grid.style.opacity = grid.style.transform = "";
     if (pinned) {
       const span = reviewsSec.offsetHeight - innerHeight;
       const p = Math.min(1, Math.max(0, -reviewsSec.getBoundingClientRect().top / span));
       // cada cartão ocupa uma fatia da rolagem; o último termina antes de soltar a seção
       const step = (i) => p * (reviewCards.length + 0.6) - i;
-      reviewCards.forEach((c, i) => {
-        const nextT = i < reviewCards.length - 1 ? step(i + 1) : 0;
-        if (stackQuery.matches && nextT > 0) stackBehind(c, nextT);
-        else {
-          c.style.filter = "";
-          show(c, step(i));
-        }
-      });
+      reviewCards.forEach((c, i) => show(c, step(i)));
     } else {
       reviewCards.forEach((c) => {
-        c.style.filter = "";
         const top = c.getBoundingClientRect().top;
         show(c, (innerHeight * 0.95 - top) / (innerHeight * 0.3));
       });
@@ -302,7 +294,8 @@ if (reviewsSec && reviewCards.length && !reduceMotion && document.documentElemen
   };
   const layout = () => {
     reviewsSec.classList.add("is-pinned");
-    const fits = wrap.offsetHeight + 40 <= innerHeight;
+    // no celular a seção nunca trava: as avaliações viram um carrossel
+    const fits = innerWidth > 760 && wrap.offsetHeight + 40 <= innerHeight;
     reviewsSec.classList.toggle("is-pinned", fits);
     pinned = fits;
     update();
@@ -311,6 +304,64 @@ if (reviewsSec && reviewCards.length && !reduceMotion && document.documentElemen
   addEventListener("resize", layout);
   document.fonts.ready.then(layout);
   layout();
+}
+
+/* Avaliações no celular: carrossel de deslizar com o dedo, bolinhas e troca automática */
+const carTrack = document.querySelector(".review-grid");
+const carNav = document.querySelector(".carousel-nav");
+if (carTrack && carNav) {
+  const phone = matchMedia("(max-width: 760px)");
+  const slides = [...carTrack.children];
+  const dotsBox = carNav.querySelector(".carousel-nav__dots");
+  const dots = slides.map((_, i) => {
+    const d = document.createElement("button");
+    d.type = "button";
+    d.className = "carousel-nav__dot";
+    d.setAttribute("aria-label", `Avaliação ${i + 1} de ${slides.length}`);
+    d.addEventListener("click", () => { stopAuto(); go(i); });
+    dotsBox.append(d);
+    return d;
+  });
+  // distância entre um cartão e o próximo (largura + espaço entre eles)
+  const pitch = () => (slides[1] ? slides[1].offsetLeft - slides[0].offsetLeft : carTrack.clientWidth);
+  const current = () => Math.round(carTrack.scrollLeft / pitch());
+  const go = (i) => {
+    const n = (i + slides.length) % slides.length;
+    carTrack.scrollTo({ left: n * pitch(), behavior: reduceMotion ? "auto" : "smooth" });
+  };
+  const mark = () => {
+    const c = current();
+    dots.forEach((d, i) => d.setAttribute("aria-current", i === c ? "true" : "false"));
+    // o cartão do centro fica nítido; os dos lados ficam menores, apagados e desfocados
+    if (!phone.matches) { slides.forEach((s) => { s.style.filter = ""; }); return; }
+    const pos = carTrack.scrollLeft / pitch();
+    slides.forEach((s, i) => {
+      const d = Math.min(1, Math.abs(pos - i));
+      s.style.opacity = 1 - 0.4 * d;
+      s.style.transform = `scale(${1 - 0.06 * d})`;
+      s.style.filter = d > 0.01 ? `blur(${(3 * d).toFixed(2)}px)` : "";
+    });
+  };
+  // passa sozinho a cada 5s enquanto está na tela; para de vez quando a pessoa mexe
+  let timer = null;
+  let touched = false;
+  let onScreen = false;
+  const stopAuto = () => { touched = true; clearInterval(timer); timer = null; };
+  const syncAuto = () => {
+    const run = phone.matches && onScreen && !touched && !reduceMotion;
+    if (run && !timer) timer = setInterval(() => go(current() + 1), 5000);
+    if (!run && timer) { clearInterval(timer); timer = null; }
+  };
+  carTrack.addEventListener("pointerdown", stopAuto);
+  carTrack.addEventListener("scroll", mark, { passive: true });
+  new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; syncAuto(); }, { threshold: 0.6 }).observe(carTrack);
+  const setup = () => {
+    carNav.hidden = !phone.matches;
+    mark();
+    syncAuto();
+  };
+  phone.addEventListener("change", setup);
+  setup();
 }
 
 /* Topo: esconde ao descer, volta ao subir. Botão flutuante some perto do fim. */
