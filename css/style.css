@@ -244,6 +244,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   gap: clamp(1rem, 2vw, 1.5rem);
   margin-top: 3rem;
 }
+/* numero impar de bilhetes: o ultimo fica centralizado na sua linha */
+.ticket:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc((100% - clamp(1rem, 2vw, 1.5rem)) / 2); }
 .ticket {
   --stub: 9.5rem;
   --bite: 13px;
@@ -715,6 +717,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   .btn { font-variation-settings: "wdth" 100; letter-spacing: 0.03em; }
   .btn--lg { font-size: 1rem; padding-inline: 1.25rem; }
   .ticket-grid { grid-template-columns: 1fr; }
+  .ticket:last-child:nth-child(odd) { width: auto; justify-self: stretch; }
   .ticket { --stub: 7rem; }
   .ticket__body { padding: 1.1rem 1.15rem; }
   .ticket__price { font-size: 2rem; }

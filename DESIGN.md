@@ -354,7 +354,7 @@ Each service is a station ticket ("bilhete"), approved by the owner as a shaped 
 - **Stub:** a Barber Red fill, centred, turning Pressed Red on hover (0.3s). It holds the price in Teko 600 (2.4rem, tabular) over "AGENDAR →". The dotted perforation runs down its left edge. It pivots from its bottom-left corner (`transform-origin: 0 100%`), and its transform transitions over 0.7s with a springy cubic-bezier(0.34, 1.56, 0.64, 1).
 - **Used ticket ("bilhete usado"):** tapping a ticket link adds `.is-used`. The ticket lifts 6px, the body gets an inset 2px Signal Red ring, the stub tears loose (`translate(10px, 4px) rotate(7deg)`), and "AGENDAR →" becomes "BILHETE USADO". The label deliberately avoids "agendado", because opening WhatsApp is not a confirmed booking. The state lasts until the page reloads.
 - **Link:** the service name is a stretched link (`::after` inset 0), so the whole ticket opens WhatsApp with the service pre-filled.
-- **Grid:** two columns (one at ≤760px). Tickets rise in with the 110ms stagger.
+- **Grid:** two columns (one at ≤760px). With an odd count, the last ticket is centred on its own row at one column wide. Tickets rise in with the 110ms stagger. There are five: Corte, Barba, Corte + barba, Corte infantil, and Pezinho (clippers icon, 10 min, R$ 20, owner, 2026-10-21).
 
 ### Review Card and Rating
 The reviews section ("O que dizem os clientes.") sits on Night Navy between services and hours. At the top is the rating: the Google average in large Teko, five stars filled to `--fill` (98% for 4,9) in Signal Red over a 20% white base, and the review count in Navy Mist.

@@ -29,8 +29,8 @@ Open: the owner will describe what makes Estação Barbabeer different from othe
 - Site language: Brazilian Portuguese.
 - Confirmed: the business name is "Estação Barbabeer".
 - Opening hours (owner, 2026-10-19): Tuesday to Friday 10:00–20:00, Saturday 09:00–18:00, closed Sunday and Monday.
-- Services and prices (owner, 2026-10-19): Corte R$ 40, Barba R$ 40, Corte + barba R$ 70, Corte infantil R$ 40.
-- Service durations (owner, 2026-10-20): Corte 30 min, Barba 30 min, Corte + barba 60 min, Corte infantil 30 min.
+- Services and prices (owner, 2026-10-19): Corte R$ 40, Barba R$ 40, Corte + barba R$ 70, Corte infantil R$ 40. Pezinho R$ 20 (owner, 2026-10-21).
+- Service durations (owner, 2026-10-20): Corte 30 min, Barba 30 min, Corte + barba 60 min, Corte infantil 30 min, Pezinho 10 min.
 - Address (owner, 2026-10-19): Estrada dos Menezes, 850 - Loja 114, Mutondo, São Gonçalo - RJ.
 - Phone and WhatsApp (owner, 2026-10-19): (21) 96704-7027. Instagram: @estacaobarbabeer.
 - Booking (owner, 2026-10-19): BarberCode on the hero button, WhatsApp everywhere else. The BarberCode page lists Barba, Corte e Barba, Corte de Cabelo Masculino and Corte de Cabelo Infantil.
