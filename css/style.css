@@ -474,6 +474,90 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .board__note { margin-top: 1rem; font-size: 0.92rem; color: var(--on-navy-soft); }
 
+/* ---------- Barbeiros: tres fotos; a escolhida cresce ---------- */
+/* Foto da geladeira de bebidas ao fundo (combina com "quem vai pagar a sua bebida"), sob o mesmo desfoque e filtro escuro */
+.team { overflow: hidden; }
+.team__bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 50%;
+  /* pouco desfoque e cor contida: da para reconhecer as bebidas sem disputar com os barbeiros */
+  filter: blur(5px) saturate(0.5); transform: scale(1.06);
+  z-index: 0;
+}
+.team::before {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: rgb(4 6 15 / 0.78);
+}
+.team > .wrap { position: relative; z-index: 2; }
+.team__head { text-align: center; display: grid; justify-items: center; gap: 1rem; margin-bottom: 3rem; }
+.team__head p { color: var(--on-navy-soft); max-width: 32rem; font-size: 1.15rem; }
+.crew { display: flex; gap: clamp(0.6rem, 1.5vw, 1rem); height: clamp(26rem, 62vh, 36rem); }
+.crew__item {
+  position: relative; flex: 1 1 0; min-width: 0; border-radius: 16px; overflow: hidden;
+  background: var(--navy); box-shadow: 0 24px 50px -28px rgb(0 0 0 / 0.75);
+  transition: flex-grow 0.7s var(--ease-out);
+}
+.crew__item.is-open { flex-grow: 3.2; }
+.crew__toggle { position: absolute; inset: 0; z-index: 3; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; border-radius: inherit; }
+.crew__item.is-open .crew__toggle { cursor: default; }
+.crew__toggle:focus-visible { outline-offset: -4px; }
+.crew__photo {
+  position: absolute; inset: 0; display: flex; align-items: start; justify-content: center; padding: 1.25rem;
+  background:
+    repeating-linear-gradient(-45deg, rgb(255 255 255 / 0.03) 0 14px, transparent 14px 28px),
+    var(--navy);
+  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.18); border-radius: inherit;
+  filter: grayscale(0.7) brightness(0.6);
+  transition: filter 0.6s var(--ease-out), transform 0.9s var(--ease-out);
+}
+.crew__photo:has(img) { box-shadow: none; padding: 0; }
+.crew__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; }
+.crew__item:hover .crew__photo { filter: grayscale(0.3) brightness(0.8); }
+.crew__item.is-open .crew__photo { filter: none; transform: scale(1.03); }
+.crew__ph {
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--on-navy-soft); text-align: center;
+}
+/* sombra embaixo para o texto ler sobre a foto */
+.crew__item::after {
+  content: ""; position: absolute; inset: 45% 0 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(transparent, rgb(4 6 15 / 0.9));
+}
+.crew__num {
+  position: absolute; left: 50%; bottom: 1rem; z-index: 2; translate: -50% 0;
+  display: grid; justify-items: center; gap: 0.35rem; white-space: nowrap;
+  transition: opacity 0.3s;
+}
+.crew__num-n { font-family: var(--display); font-size: 2.6rem; line-height: 1; color: var(--white); }
+/* com o nome preenchido, so o nome aparece; o numero fica so enquanto falta o nome */
+.crew__num-name:empty { display: none; }
+.crew__num:has(.crew__num-name:not(:empty)) .crew__num-n { display: none; }
+.crew__num-name {
+  font-family: var(--display); font-weight: 600; text-transform: uppercase;
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem); line-height: 1; color: var(--white);
+}
+.crew__item.is-open .crew__num { opacity: 0; }
+.crew__info {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 4;
+  display: grid; gap: 0.6rem; justify-items: start; padding: clamp(1.25rem, 3vw, 2rem);
+  opacity: 0; translate: 0 16px; visibility: hidden;
+  transition: opacity 0.3s, translate 0.3s, visibility 0s 0.3s;
+}
+.crew__item.is-open .crew__info {
+  opacity: 1; translate: 0 0; visibility: visible;
+  transition: opacity 0.45s 0.3s, translate 0.55s 0.3s var(--ease-out), visibility 0s;
+}
+.crew__tag {
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--on-navy-soft);
+}
+.crew__name {
+  font-family: var(--display); font-weight: 600; text-transform: uppercase;
+  font-size: clamp(2.6rem, 5vw, 4rem); line-height: 0.95; margin-bottom: 0.4rem;
+  white-space: nowrap;
+}
+.crew__name .tbd { font-size: 0.6em; }
+
 /* ---------- Nosso trabalho ---------- */
 .work__head {
   display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between;
@@ -550,7 +634,18 @@ ul { margin: 0; padding: 0; list-style: none; }
   padding-block: var(--section);
   text-align: center; overflow: hidden;
 }
-.closing__inner { display: grid; justify-items: center; gap: 1.25rem; }
+/* Foto das cadeiras vazias ao fundo ("sua cadeira esta esperando"): desfoque leve para a cadeira ser reconhecivel */
+.closing__bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 45% 60%;
+  filter: blur(4px); transform: scale(1.06);
+  z-index: 0;
+}
+.closing::before {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: rgb(4 6 15 / 0.75);
+}
+.closing__inner { position: relative; z-index: 2; display: grid; justify-items: center; gap: 1.25rem; }
 .closing__title { font-size: clamp(2.4rem, 7vw, 5.5rem); max-width: 14ch; }
 .closing p { color: var(--on-navy-soft); font-size: 1.2rem; margin-bottom: 0.75rem; }
 .closing__alt {
@@ -650,6 +745,16 @@ ul { margin: 0; padding: 0; list-style: none; }
   }
   .carousel-nav__dot[aria-current="true"]::before { background: var(--star); transform: scale(1.35); }
   .reviews__actions { margin-top: 1.75rem; }
+  /* Celular: as fotos ficam empilhadas; a tocada cresce para baixo */
+  .team__head { margin-bottom: 2rem; }
+  .crew { flex-direction: column; height: auto; gap: 0.6rem; }
+  .crew__item { flex: 0 0 5.5rem; transition: flex-basis 0.7s var(--ease-out); }
+  .crew__item.is-open { flex-basis: 27rem; }
+  .crew__photo { align-items: center; justify-content: end; }
+  .crew__num { left: 1.25rem; bottom: 50%; translate: 0 50%; justify-items: start; gap: 0.25rem; }
+  .crew__num-name { font-size: 1.7rem; }
+  .crew__photo img { object-position: 50% 30%; }
+  .crew__go { width: 100%; justify-content: center; }
   .work__grid { grid-template-columns: 1fr 1fr; }
   .float-whats { display: grid; }
   .board__day small { display: block; width: max-content; margin: 0.25rem 0 0; }

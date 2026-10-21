@@ -37,6 +37,7 @@ Open: the owner will describe what makes Estação Barbabeer different from othe
 - Google reviews (owner's listing, read 2026-10-20): average 4,9 from 96 reviews (89×5★, 5×4★, 1×3★, 0×2★, 1×1★). The site quotes 4 five-star reviews verbatim, with names as first name plus first-surname initial (owner's rule): Jacielle S., Daniel P., Fernando S., Arthur F. A fifth 5★ review was left out because it includes a complaint, and quoting only its positive half would misrepresent it. Listing: https://www.google.com/maps?cid=16479059746991049617
 - Facade photo (owner, 2026-10-20): the lit shop sign on the blue storefront, used darkened behind the hero (`assets/fachada.webp`, 1672×941).
 - Gallery media (owner, 2026-10-20): 4 photos of cuts in the shop and 2 vertical videos (one of barbers at work in the salon, one of the drinks fridge and the shop sign), in `assets/galeria/` (photos and video stills as WebP, videos as the owner's MP4s, about 17 MB each).
+- Barbers (owner, 2026-10-21): Wanderson, Danillo and Pedro, in that order on the site, each with a photo in `assets/equipe/`.
 - Still not supplied, and not to be invented: the story of the shop.
 - Site data lives in `CONFIG` at the top of `js/main.js`: booking link, WhatsApp, phone, Instagram, address (which also generates the map), and hours. Gallery photos and videos are listed directly in `index.html`. Prices and service names are edited in `index.html`. Missing data shows as dashed "a preencher" placeholders.
 

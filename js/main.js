@@ -82,6 +82,39 @@ document.querySelectorAll("[data-service]").forEach((a) => {
   a.addEventListener("click", () => a.closest(".ticket")?.classList.add("is-used"));
 });
 
+/* Barbeiros: três fotos; a tocada cresce, mostra o nome e o botão de agendar com ele */
+const crew = [...document.querySelectorAll(".crew__item")];
+crew.forEach((item) => {
+  const { num, nome, foto } = item.dataset;
+  if (foto) {
+    const img = document.createElement("img");
+    img.src = foto;
+    img.alt = `Foto de ${nome || "barbeiro nº " + num}`;
+    img.loading = "lazy";
+    img.decoding = "async";
+    item.querySelector(".crew__photo").replaceChildren(img);
+  }
+  if (nome) {
+    item.querySelector(".crew__name").textContent = nome;
+    item.querySelector(".crew__num-name").textContent = nome;
+    item.querySelector(".crew__go-label").textContent = `Agendar com ${nome}`;
+    item.querySelector(".crew__toggle .sr").textContent = `Ver ${nome}`;
+  }
+  const go = item.querySelector(".crew__go");
+  if (CONFIG.whatsapp) {
+    const msg = `Olá! Quero agendar um horário com ${nome || "o barbeiro nº " + num} na Estação Barbabeer.`;
+    go.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+    go.target = "_blank";
+    go.rel = "noopener";
+  }
+  item.querySelector(".crew__toggle").addEventListener("click", () => {
+    crew.forEach((o) => {
+      o.classList.toggle("is-open", o === item);
+      o.querySelector(".crew__toggle").setAttribute("aria-expanded", o === item ? "true" : "false");
+    });
+  });
+});
+
 /* Contato */
 if (CONFIG.telefone) {
   document.querySelectorAll("[data-phone]").forEach((el) => {
@@ -224,6 +257,8 @@ if ("IntersectionObserver" in window && !reduceMotion) {
     ".services__head p",
     ".services__cta",
     ".board",
+    ".team__head p",
+    ".crew",
     ".work__head .link",
     ".frame",
     ".visit__info",

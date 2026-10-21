@@ -54,6 +54,7 @@
       <nav class="topbar__nav" id="menu" aria-label="Principal">
         <a href="#servicos">Serviços</a>
         <a href="#horarios">Horários</a>
+        <a href="#equipe">Barbeiros</a>
         <a href="#trabalho">Nosso trabalho</a>
         <a href="#contato">Contato</a>
       </nav>
@@ -229,6 +230,57 @@
       </div>
     </section>
 
+    <!-- BARBEIROS: três fotos lado a lado; a tocada cresce e mostra o nome.
+         Para cada barbeiro, preencha data-nome e data-foto no .crew__item
+         (foto: caminho de uma imagem retrato, ex. assets/equipe/joao.webp). -->
+    <section class="team field field--deep" id="equipe" aria-labelledby="equipe-titulo">
+      <img class="team__bg" src="assets/geladeira-fundo.webp" width="1600" height="1055" alt="" loading="lazy" decoding="async">
+      <div class="wrap">
+        <div class="team__head">
+          <h2 class="display" id="equipe-titulo" data-echo="Escolha seu barbeiro.">Escolha seu barbeiro.</h2>
+          <p>Decida quem vai pagar a sua bebida!</p>
+        </div>
+        <ul class="crew" role="list">
+          <li class="crew__item is-open" data-num="01" data-nome="Wanderson" data-foto="assets/equipe/wanderson.webp">
+            <button class="crew__toggle" type="button" aria-expanded="true" aria-controls="crew-1"><span class="sr">Ver o barbeiro nº 01</span></button>
+            <div class="crew__photo"><span class="crew__ph">Foto a preencher</span></div>
+            <span class="crew__num" aria-hidden="true"><span class="crew__num-n">01</span><span class="crew__num-name"></span></span>
+            <div class="crew__info" id="crew-1">
+              <p class="crew__tag">Barbeiro nº 01</p>
+              <h3 class="crew__name"><span class="tbd">Nome</span></h3>
+              <a class="btn btn--red crew__go" href="#contato">
+                <svg class="ico"><use href="#i-whats"/></svg><span class="crew__go-label">Agendar horário</span>
+              </a>
+            </div>
+          </li>
+          <li class="crew__item" data-num="02" data-nome="Danillo" data-foto="assets/equipe/danillo.webp">
+            <button class="crew__toggle" type="button" aria-expanded="false" aria-controls="crew-2"><span class="sr">Ver o barbeiro nº 02</span></button>
+            <div class="crew__photo"><span class="crew__ph">Foto a preencher</span></div>
+            <span class="crew__num" aria-hidden="true"><span class="crew__num-n">02</span><span class="crew__num-name"></span></span>
+            <div class="crew__info" id="crew-2">
+              <p class="crew__tag">Barbeiro nº 02</p>
+              <h3 class="crew__name"><span class="tbd">Nome</span></h3>
+              <a class="btn btn--red crew__go" href="#contato">
+                <svg class="ico"><use href="#i-whats"/></svg><span class="crew__go-label">Agendar horário</span>
+              </a>
+            </div>
+          </li>
+          <li class="crew__item" data-num="03" data-nome="Pedro" data-foto="assets/equipe/pedro.webp">
+            <button class="crew__toggle" type="button" aria-expanded="false" aria-controls="crew-3"><span class="sr">Ver o barbeiro nº 03</span></button>
+            <div class="crew__photo"><span class="crew__ph">Foto a preencher</span></div>
+            <span class="crew__num" aria-hidden="true"><span class="crew__num-n">03</span><span class="crew__num-name"></span></span>
+            <div class="crew__info" id="crew-3">
+              <p class="crew__tag">Barbeiro nº 03</p>
+              <h3 class="crew__name"><span class="tbd">Nome</span></h3>
+              <a class="btn btn--red crew__go" href="#contato">
+                <svg class="ico"><use href="#i-whats"/></svg><span class="crew__go-label">Agendar horário</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- NOSSO TRABALHO: molduras para fotos reais -->
     <section class="work field field--navy" id="trabalho" aria-labelledby="trabalho-titulo">
       <div class="wrap">
@@ -281,6 +333,7 @@
 
     <!-- CHAMADA FINAL -->
     <section class="closing" aria-labelledby="final-titulo">
+      <img class="closing__bg" src="assets/cadeiras-fundo.webp" width="1600" height="900" alt="" loading="lazy" decoding="async">
       <div class="wrap closing__inner">
         <h2 class="display closing__title" id="final-titulo" data-echo="Sua cadeira está esperando.">Sua cadeira está esperando.</h2>
         <p>Mande uma mensagem no WhatsApp e combine seu horário.</p>
@@ -298,6 +351,7 @@
       <nav aria-label="Rodapé">
         <a href="#servicos">Serviços</a>
         <a href="#horarios">Horários</a>
+        <a href="#equipe">Barbeiros</a>
         <a href="#trabalho">Nosso trabalho</a>
         <a href="#contato">Contato</a>
       </nav>

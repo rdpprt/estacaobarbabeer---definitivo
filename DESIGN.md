@@ -223,10 +223,9 @@ A blue-black ladder with white ink, soft tints for secondary text, and the logo'
 ### Primary
 - **Night Navy** (navy): The default ground. It fills the body and the hero, reviews, work, and closing sections, and it is the theme colour. White sits on it as ink.
 
-**The Photo Atmosphere Rule.** Two sections carry a photograph behind their content, and both share one treatment so they read as a pair: a deliberate blur (`--photo-blur: 7px`, image scaled 1.08 to hide the blurred edge) under one veil (`--photo-veil: rgb(4 6 15 / 0.86)`, Navy Ink at 86%). The photo is atmosphere only, a field of colour and light, never read as content; the strong blur is intentional and also hides the low resolution of the owner's source images.
+**The Photo Atmosphere Rule.** Four sections carry an owner photo behind their content (see the table in Layout), always as photo (z 0), Navy Ink veil (z 1), content (z 2), with the image scaled slightly to hide the blurred edge. The hero and reviews share the strong treatment (`--photo-blur: 7px`, `--photo-veil` at 86%): their photos are pure atmosphere, and the blur also hides low-resolution sources. The barbers and closing photos are blurred less (5px and 4px, veils at 78% and 75%) because their subject is part of the message: the drinks behind "quem vai pagar a sua bebida" and the empty chairs behind "Sua cadeira está esperando."
 - **Hero:** the owner's facade photo (`assets/fachada.webp`, object-fit cover, positioned 48% 45%), under the shared blur and veil (`.hero::before`), plus a gradient that fades the bottom 45% into Night Navy. The logo seal in the hero is the one logo the visitor reads.
 - **Reviews:** the owner's Instagram photo of a client drinking a beer during his cut (`assets/avaliacoes-fundo.webp`, upscaled to 1920² with Lanczos from the 1080² Instagram source and saved at WebP 92 to avoid a second round of artifacts; lazy-loaded, empty alt), placed as `.reviews__bg` inside `.reviews__pin`: object-fit cover, positioned 50% 40%, under the shared blur and a flat shared veil (`.reviews__pin::before`); the section ends on straight edges like every other section, with no fades (the owner rejected them). Replace the photo with the owner's original file when it arrives. Because the photo lives inside the sticky pin, it stays still while the cards reveal.
-- **Layers:** in both sections, photo (z 0), veil (z 1), content (z 2).
 
 **The One Logo Rule.** Only one logo is visible at a time. While the hero logo is below the topbar, the topbar brand is hidden (`.topbar.logo-hidden`, opacity 0 and visibility hidden, 0.35s); it fades in once the hero logo scrolls under the bar.
 - **Barber Red** (red): Sampled from the logo. It fills every booking button, the ticket stubs, the floating WhatsApp button, the contact icon discs, and the "Hoje" tag, tints the "today" row (22%), and draws the nav underline, the mobile menu's bottom edge, and the selection highlight.
@@ -282,7 +281,16 @@ A blue-black ladder with white ink, soft tints for secondary text, and the logo'
 
 ## Layout
 
-The page is a vertical stack of full-width sections on the dark ground. Each section pads its block by the section rhythm (clamp(4.5rem, 10vw, 8rem)) and opens on a 1px hairline. Content sits in a centred wrap of up to 72rem, with a fluid gutter of clamp(1rem, 4vw, 2.5rem) on each side, fixed at 1.5rem at 760px and below so phone content keeps clear of the screen edge (owner, 2026-10-20). The order is hero (navy), services (deep), reviews (navy), hours (deep), work (navy), visit (deep), closing (navy), and footer (navy-ink).
+The page is a vertical stack of full-width sections on the dark ground. Each section pads its block by the section rhythm (clamp(4.5rem, 10vw, 8rem)) and opens on a 1px hairline. Content sits in a centred wrap of up to 72rem, with a fluid gutter of clamp(1rem, 4vw, 2.5rem) on each side, fixed at 1.5rem at 760px and below so phone content keeps clear of the screen edge (owner, 2026-10-20). The order is hero (navy), services (deep), reviews (navy), hours (deep), barbers (deep), work (navy), visit (deep), closing (navy), and footer (navy-ink). Four sections carry an owner photo behind them, each with its own blur and dark veil:
+
+| Section | Photo | Blur | Veil (Navy Ink) | Other |
+| --- | --- | --- | --- | --- |
+| Hero | Facade (`fachada.webp`) | 7px | 86% | |
+| Reviews | `avaliacoes-fundo.webp` | 7px | 86% | |
+| Barbers | Drinks fridge, horizontal shelf shot (`geladeira-fundo.webp`), tying in with "Decida quem vai pagar a sua bebida!" | 5px | 78% | Saturate 0.5 |
+| Closing | Empty chairs in the salon (`cadeiras-fundo.webp`), tying in with "Sua cadeira está esperando." | 4px | 75% | |
+
+The barbers and closing photos are blurred less than the hero and reviews so their subject stays recognisable (owner, 2026-10-21).
 
 The hero is a single centred column, at most 60rem wide and up to min(100svh, 60rem) tall. It stacks the logo (min(22rem, 70vw)), the two-line h1 (red lead line over the giant white line), the lede (at most 36rem), and the centred actions.
 
@@ -366,6 +374,18 @@ The mechanic is copied from barbeariaabanca.com.br. The section's content is wra
 - **Easing:** In both modes, t is clamped to 0–1 and eased with a cubic ease-out (1 − (1 − t)³). It maps to opacity 0→1, translateY 34px→0, and scale 0.97→1, and it follows the scroll in both directions.
 - **Gate:** Cards start hidden only under `.js`. They are not part of the `data-rise` stagger. Under reduced motion the script does not run and the cards are fully visible.
 
+### Barber Crew (signature)
+Three barber photos side by side that grow when tapped (owner, 2026-10-21), placed before the gallery under "Escolha seu barbeiro." / "Decida quem vai pagar a sua bebida!" (owner, 2026-10-21)
+
+- **Layout:** A flex row, clamp(26rem, 62vh, 36rem) tall. Each item is a 16px-radius tile with the card drop and its photo covering the tile.
+- **Open item:** It grows to flex-grow 3.2 (0.7s ease-out) while the others stay at 1. Its photo goes to full colour at scale 1.03. Its bottom panel fades and slides in after 0.3s: "Barbeiro nº 0X", the name in Teko at clamp(2.6rem, 5vw, 4rem), and a red WhatsApp button.
+- **Closed items:** Desaturated (grayscale 0.7, brightness 0.6), easing back on hover. At the bottom they show only the name in Teko (clamp(1.3rem, 2.2vw, 1.8rem); 1.7rem on phones), so the visitor knows who is who without tapping (no number above it, owner, 2026-10-21). Before a name is set, the number shows alone in large Teko.
+- **Gradient:** A Navy Ink gradient over the bottom 55% keeps text legible.
+- **Booking:** The button reads "Agendar com {nome}" ("Agendar horário" until a name is set). It opens WhatsApp with "Olá! Quero agendar um horário com {nome} na Estação Barbabeer."
+- **Accessibility:** A full-tile button toggles each item, with `aria-expanded` and `aria-controls`.
+- **Data:** `data-nome` and `data-foto` on each `.crew__item` in `index.html`. Until filled, the tiles show the hatch placeholder and the name is a dashed `.tbd` chip.
+- **≤760px:** The tiles stack as 5.5rem strips, with the name on the left and the photo centred at 30% from the top. The open one grows to 27rem (flex-basis, 0.7s), and the button goes full width.
+
 ### Title Echo (signature)
 Each section h2 repeats its own text in a `data-echo` attribute. A pseudo-element draws that text behind the headline as a hollow outline (transparent fill, 1.5px stroke at 32% white). It is offset 0.09em right and 0.11em up, at z-index -1 inside an isolated stacking context. The echo breathes continuously (scale 1.045 and back, 5s, infinite). Its content is given empty alt text (`content: attr(data-echo) / ""`), so assistive tech does not read it twice.
 
@@ -381,7 +401,7 @@ Facts sit in a list, each with a 3rem red disc holding a white line icon, an upp
 - **Photo frame:** A portrait tile (aspect 2 / 3, 10px radius, Navy Deep behind) filled edge to edge by the owner's photo (WebP, lazy-loaded) or video. Videos are muted, looped and inline, with `preload="none"` and a still-frame poster; an IntersectionObserver (35% visible) plays them only while on screen and pauses them off screen, so their download starts only when the gallery is reached. Under reduced motion they never autoplay and show native controls. Every tile is a link to the Instagram profile (new tab, owner, 2026-10-20), labelled "Ver no Instagram: …" with the media description. A 2.1rem round Instagram badge sits in the bottom-right corner (Navy Ink at 60%, red on hover), and on hover the media zooms to 1.04 over 0.6s. An empty frame (no media) keeps the placeholder look: a faint 45° hatch, a 2px dashed white border at 30%, and a Navy Mist label.
 
 ### Navigation
-A fixed, frosted Navy Deep bar (92% opacity, saturate 1.4, blur 10px) with a hairline bottom edge. Links are uppercase, wide (wdth 125), and set in Navy Mist. On hover they turn white and a 2px red underline wipes in from the left. At 1100px and below, links stack full width in a Navy Deep panel with a 4px red bottom edge, revealed by a clip-path wipe. Escape and link taps close it.
+Links, in page order: Serviços, Horários, Barbeiros, Nosso trabalho, Contato (the footer repeats them). A fixed, frosted Navy Deep bar (92% opacity, saturate 1.4, blur 10px) with a hairline bottom edge. Links are uppercase, wide (wdth 125), and set in Navy Mist. On hover they turn white and a 2px red underline wipes in from the left. At 1100px and below, links stack full width in a Navy Deep panel with a 4px red bottom edge, revealed by a clip-path wipe. Escape and link taps close it.
 
 ### Floating WhatsApp (phones)
 A 3.75rem red circle with a 3px white ring, fixed at the bottom right at 760px and below. While it is showing, it pulses four times (scale 1.08, 2.2s) and sends out a red ripple ring each time (to 1.9× scale while fading). The pulses restart each time it reappears.
@@ -400,7 +420,7 @@ The motion grammar is the reference site's, adopted by the owner's request. The 
 
 ### Do:
 - **Do** alternate sections between Night Navy and Navy Deep, and open each one on the 1px hairline at 7% white.
-- **Do** keep any background photo as atmosphere: blurred 2–3px, under an 82% veil, behind the content layer.
+- **Do** keep any background photo behind a Navy Ink veil and the content layer, blurred enough that the section text and cards always win (see The Photo Atmosphere Rule).
 - **Do** keep red to signals: buttons, ticket stubs, stars, contact discs, and board states. Use Signal Red for small marks and type on navy.
 - **Do** use the red pill for every booking action, and the ghost pill only for a secondary action beside it.
 - **Do** set every display use in Teko 600, with words in uppercase.
