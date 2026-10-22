@@ -114,6 +114,7 @@ rounded:
 spacing:
   gutter: "clamp(1rem, 4vw, 2.5rem)"
   section: "clamp(4.5rem, 10vw, 8rem)"
+  head-gap: "clamp(2rem, 4.5vw, 3rem)"
   wrap: "72rem"
   hero-wrap: "60rem"
   topbar: "4.25rem"
@@ -225,7 +226,7 @@ A blue-black ladder with white ink, soft tints for secondary text, and the logo'
 
 **The Photo Atmosphere Rule.** Four sections carry an owner photo behind their content (see the table in Layout), always as photo (z 0), Navy Ink veil (z 1), content (z 2), with the image scaled slightly to hide the blurred edge. The hero and reviews share the strong treatment (`--photo-blur: 7px`, `--photo-veil` at 86%): their photos are pure atmosphere, and the blur also hides low-resolution sources. The barbers and closing photos are blurred less (5px and 4px, veils at 78% and 75%) because their subject is part of the message: the drinks behind "quem vai pagar a sua bebida" and the empty chairs behind "Sua cadeira está esperando."
 - **Hero:** the owner's facade photo (`assets/fachada.webp`, object-fit cover, positioned 48% 45%), under the shared blur and veil (`.hero::before`), plus a gradient that fades the bottom 45% into Night Navy. The logo seal in the hero is the one logo the visitor reads.
-- **Reviews:** the owner's Instagram photo of a client drinking a beer during his cut (`assets/avaliacoes-fundo.webp`, upscaled to 1920² with Lanczos from the 1080² Instagram source and saved at WebP 92 to avoid a second round of artifacts; lazy-loaded, empty alt), placed as `.reviews__bg` inside `.reviews__pin`: object-fit cover, positioned 50% 40%, under the shared blur and a flat shared veil (`.reviews__pin::before`); the section ends on straight edges like every other section, with no fades (the owner rejected them). Replace the photo with the owner's original file when it arrives. Because the photo lives inside the sticky pin, it stays still while the cards reveal.
+- **Reviews:** the owner's Instagram photo of a client drinking a beer during his cut (`assets/avaliacoes-fundo.webp`, 1200² WebP from the 1080² Instagram source; lazy-loaded, empty alt), placed as `.reviews__bg` inside `.reviews__pin`: object-fit cover, positioned 50% 40%, under the shared blur and a flat shared veil (`.reviews__pin::before`); the section ends on straight edges like every other section, with no fades (the owner rejected them). Replace the photo with the owner's original file when it arrives. Because the photo lives inside the sticky pin, it stays still while the cards reveal.
 
 **The One Logo Rule.** Only one logo is visible at a time. While the hero logo is below the topbar, the topbar brand is hidden (`.topbar.logo-hidden`, opacity 0 and visibility hidden, 0.35s); it fades in once the hero logo scrolls under the bar.
 - **Barber Red** (red): Sampled from the logo. It fills every booking button, the ticket stubs, the floating WhatsApp button, the contact icon discs, and the "Hoje" tag, tints the "today" row (22%), and draws the nav underline, the mobile menu's bottom edge, and the selection highlight.
@@ -281,7 +282,7 @@ A blue-black ladder with white ink, soft tints for secondary text, and the logo'
 
 ## Layout
 
-The page is a vertical stack of full-width sections on the dark ground. Each section pads its block by the section rhythm (clamp(4.5rem, 10vw, 8rem)) and opens on a 1px hairline. Content sits in a centred wrap of up to 72rem, with a fluid gutter of clamp(1rem, 4vw, 2.5rem) on each side, fixed at 1.5rem at 760px and below so phone content keeps clear of the screen edge (owner, 2026-10-20). The order is hero (navy), services (deep), reviews (navy), hours (deep), barbers (deep), work (navy), visit (deep), closing (navy), and footer (navy-ink). Four sections carry an owner photo behind them, each with its own blur and dark veil:
+The page is a vertical stack of full-width sections on the dark ground. Each section pads its block by the section rhythm (clamp(4.5rem, 10vw, 8rem)) and opens on a 1px hairline. Every section head sits one `--head-gap` (clamp(2rem, 4.5vw, 3rem): 32px on phones, 48px on desktop) above its content: the tickets, reviews, board, barbers, and gallery. The phone review track subtracts its own 0.5rem top padding so the visible gap matches. Content sits in a centred wrap of up to 72rem, with a fluid gutter of clamp(1rem, 4vw, 2.5rem) on each side, fixed at 1.5rem at 760px and below so phone content keeps clear of the screen edge (owner, 2026-10-20). The order is hero (navy), services (deep), reviews (navy), hours (deep), barbers (deep), work (navy), visit (deep), closing (navy), and footer (navy-ink). Four sections carry an owner photo behind them, each with its own blur and dark veil:
 
 | Section | Photo | Blur | Veil (Navy Ink) | Other |
 | --- | --- | --- | --- | --- |
@@ -301,7 +302,7 @@ The topbar is fixed at 4.25rem (3.75rem on phones). It hides on scroll down and 
 **Breakpoints:**
 - **≤1100px:** The nav collapses into a clip-path drop-down panel behind a menu toggle. The booking CTA stays visible in the bar.
 - **≤960px:** The visit grid stacks.
-- **≤760px:** The topbar CTA hides. A floating round WhatsApp button appears and hides itself near the top and near the closing section. Hero buttons go full width, button text narrows to wdth 100, and the large button drops to 1rem with 1.25rem side padding. Review cards become a swipe carousel with dots, and the section does not pin. Tickets stack to one column, the stub narrows to 7rem, the body padding tightens to 1.1rem 1.15rem, and the price drops to 2rem. The gallery goes to 2 columns. Flaps shrink to 1.05 × 1.6rem.
+- **≤760px:** The topbar CTA hides. A floating round WhatsApp button appears and hides itself near the top and near the closing section. Hero buttons go full width, button text narrows to wdth 100, and the large button drops to 1rem with 1.25rem side padding. Review cards become a swipe carousel with dots, and the section does not pin. Tickets stack to one column, drop their minimum height from 9rem to 7.25rem (the content needs about 6.5rem), the stub narrows to 7rem, the body padding tightens to 1.1rem 1.15rem, and the price drops to 2rem. The gallery goes to 2 columns. Flaps shrink to 1.05 × 1.6rem.
 
 ## Elevation & Depth
 
@@ -415,6 +416,16 @@ The motion grammar is the reference site's, adopted by the owner's request. The 
 - **Loops:** Two signatures loop forever: the hero logo float (6s) and the title-echo breathe (5s). The floating button pulses and ripples four times (2.2s ×4). Nothing else repeats.
 - **Interaction:** Buttons lift (0.35s), tickets lift 4px and their stub darkens (0.45s / 0.3s), a used ticket lifts 6px and its stub tears loose with a springy 0.7s overshoot, the topbar hides (0.45s), and the menu panel wipes open (0.45s).
 - **Reduced motion:** Under `prefers-reduced-motion: reduce`, every animation and pseudo-element animation is set to none, transitions collapse to 0.01ms, smooth scrolling is off, and `data-rise` blocks and review cards are forced visible.
+
+## Asset Budget
+
+Most visitors arrive on a phone, so every shipped asset is sized for how it is shown (2026-10-21):
+- **Blurred backgrounds** (facade, fridge, chairs) are 1280px wide WebP at quality 68–72, about 70–80 KB each, and the reviews photo is 1200²; the blur hides the difference. Only the hero photo loads eagerly (`fetchpriority="high"`); the rest are lazy.
+- **Logo:** `logo-hd.webp` at 720×454 (shown at up to 22rem), 46 KB. The tab icon is a 64px `favicon.png`, plus a 180px `apple-touch-icon.png` on Night Navy. The 1032px `logo-hd.png` stays only as the source for the share image.
+- **Gallery videos:** 540×960 H.264 (CRF 27, capped at 1.5 Mbps), no audio track, `+faststart`, about 1.7 MB each (from 17 MB). They keep `preload="none"` and play only while on screen. Posters are 540×960 WebP.
+- **Photos:** gallery and barber portraits are WebP at up to 900px wide, 40–80 KB.
+
+The first view (HTML, CSS, JS, two font files, facade and logo) is about 300 KB. The whole page with everything loaded is about 1 MB, plus the videos only if the visitor reaches the gallery.
 
 ## Do's and Don'ts
 

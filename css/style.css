@@ -15,6 +15,7 @@
   --wrap: 72rem;
   --gutter: clamp(1rem, 4vw, 2.5rem);
   --section: clamp(4.5rem, 10vw, 8rem);
+  --head-gap: clamp(2rem, 4.5vw, 3rem); /* cabecalho da secao -> conteudo */
   --radius: 6px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --topbar-h: 4.25rem;
@@ -242,7 +243,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .ticket-grid {
   display: grid; grid-template-columns: repeat(2, 1fr);
   gap: clamp(1rem, 2vw, 1.5rem);
-  margin-top: 3rem;
+  margin-top: var(--head-gap);
 }
 /* numero impar de bilhetes: o ultimo fica centralizado na sua linha */
 .ticket:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc((100% - clamp(1rem, 2vw, 1.5rem)) / 2); }
@@ -354,7 +355,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .rating__count { color: var(--on-navy-soft); font-weight: 650; }
 .review-grid {
   display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: clamp(1rem, 2vw, 1.5rem); margin-top: 3rem;
+  gap: clamp(1rem, 2vw, 1.5rem); margin-top: var(--head-gap);
 }
 .review {
   position: relative;
@@ -418,7 +419,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .timetable { background: var(--navy-deep); }
 .timetable__head {
   display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between;
-  gap: 1rem 2rem; margin-bottom: 2.5rem;
+  gap: 1rem 2rem; margin-bottom: var(--head-gap);
 }
 
 .board {
@@ -491,7 +492,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   background: rgb(4 6 15 / 0.78);
 }
 .team > .wrap { position: relative; z-index: 2; }
-.team__head { text-align: center; display: grid; justify-items: center; gap: 1rem; margin-bottom: 3rem; }
+.team__head { text-align: center; display: grid; justify-items: center; gap: 1rem; margin-bottom: var(--head-gap); }
 .team__head p { color: var(--on-navy-soft); max-width: 32rem; font-size: 1.15rem; }
 .crew { display: flex; gap: clamp(0.6rem, 1.5vw, 1rem); height: clamp(26rem, 62vh, 36rem); }
 .crew__item {
@@ -563,7 +564,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* ---------- Nosso trabalho ---------- */
 .work__head {
   display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between;
-  gap: 1rem 2rem; margin-bottom: 2.5rem;
+  gap: 1rem 2rem; margin-bottom: var(--head-gap);
 }
 .work__head .link { color: var(--white); }
 .work__grid {
@@ -719,11 +720,12 @@ ul { margin: 0; padding: 0; list-style: none; }
   .ticket-grid { grid-template-columns: 1fr; }
   .ticket:last-child:nth-child(odd) { width: auto; justify-self: stretch; }
   .ticket { --stub: 7rem; }
+  .ticket__card { min-height: 7.25rem; }
   .ticket__body { padding: 1.1rem 1.15rem; }
   .ticket__price { font-size: 2rem; }
   /* Celular: carrossel de deslizar, uma avaliacao por vez */
   .review-grid {
-    display: flex; gap: 0.75rem; margin-top: 2rem;
+    display: flex; gap: 0.75rem; margin-top: calc(var(--head-gap) - 0.5rem);
     margin-inline: calc(50% - 50vw); padding: 0.5rem 14vw 1.5rem;
     overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
     overscroll-behavior-x: contain;
@@ -749,7 +751,6 @@ ul { margin: 0; padding: 0; list-style: none; }
   .carousel-nav__dot[aria-current="true"]::before { background: var(--star); transform: scale(1.35); }
   .reviews__actions { margin-top: 1.75rem; }
   /* Celular: as fotos ficam empilhadas; a tocada cresce para baixo */
-  .team__head { margin-bottom: 2rem; }
   .crew { flex-direction: column; height: auto; gap: 0.6rem; }
   .crew__item { flex: 0 0 5.5rem; transition: flex-basis 0.7s var(--ease-out); }
   .crew__item.is-open { flex-basis: 27rem; }
