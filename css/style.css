@@ -156,9 +156,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   width: min(100% - 2 * var(--gutter), var(--wrap)); margin-inline: auto;
   display: flex; align-items: center; gap: 1.5rem;
 }
-.topbar__brand img { height: 2.9rem; width: auto; }
+.topbar__brand img { height: 2.9rem; width: auto; max-width: none; flex: none; }
 /* Enquanto a logo grande do topo da pagina esta visivel, a logo da barra fica escondida */
-.topbar__brand { transition: opacity 0.35s var(--ease-out), visibility 0s; }
+.topbar__brand { flex: none; transition: opacity 0.35s var(--ease-out), visibility 0s; } /* a logo nunca encolhe quando o menu cresce */
 .topbar.logo-hidden .topbar__brand { opacity: 0; visibility: hidden; transition: opacity 0.35s var(--ease-out), visibility 0s 0.35s; }
 .topbar__nav { display: flex; gap: clamp(1rem, 2vw, 1.75rem); margin-left: auto; }
 .topbar__nav a, .topbar__cta { white-space: nowrap; }
@@ -692,7 +692,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 /* Telas medias: o menu vira o botao de abrir, e o botao de agendar continua a vista */
-@media (max-width: 1100px) {
+/* o menu vira gaveta antes de o botao do topo sair da tela (logo + 5 links + botao precisam de ~1240px) */
+@media (max-width: 1280px) {
   .topbar__toggle { display: inline-flex; margin-left: 0.5rem; }
   .topbar__cta { margin-left: auto; }
   .topbar__nav {
