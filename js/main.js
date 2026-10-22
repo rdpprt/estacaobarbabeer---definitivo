@@ -83,6 +83,16 @@ if (CONFIG.whatsapp) {
 document.querySelectorAll("[data-service]").forEach((a) => {
   a.addEventListener("click", () => a.closest(".ticket")?.classList.add("is-used"));
 });
+// Quando a pessoa volta para o site, o canhoto se cola de novo (com a mesma mola, ao contrário)
+const restoreTickets = () => {
+  if (document.visibilityState !== "visible") return;
+  setTimeout(() => {
+    document.querySelectorAll(".ticket.is-used").forEach((t) => t.classList.remove("is-used"));
+  }, 700);
+};
+document.addEventListener("visibilitychange", restoreTickets);
+// voltar pelo botão "voltar" do celular pode restaurar a página da memória (bfcache)
+addEventListener("pageshow", (e) => e.persisted && restoreTickets());
 
 /* O bilhete inteiro abre o agendamento: a mascara das mordidas corta o link esticado
    no corpo azul, entao um toque no canhoto vermelho repassa o clique para o link */
