@@ -82,6 +82,16 @@ document.querySelectorAll("[data-service]").forEach((a) => {
   a.addEventListener("click", () => a.closest(".ticket")?.classList.add("is-used"));
 });
 
+/* O bilhete inteiro abre o agendamento: a mascara das mordidas corta o link esticado
+   no corpo azul, entao um toque no canhoto vermelho repassa o clique para o link */
+document.querySelectorAll(".ticket").forEach((t) => {
+  const link = t.querySelector(".ticket__link");
+  if (!link) return;
+  t.addEventListener("click", (e) => {
+    if (!e.target.closest("a")) link.click();
+  });
+});
+
 /* Barbeiros: três fotos; a tocada cresce, mostra o nome e o botão de agendar com ele */
 const crew = [...document.querySelectorAll(".crew__item")];
 crew.forEach((item) => {

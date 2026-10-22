@@ -311,6 +311,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   border-left: 3px dotted rgb(255 255 255 / 0.55);
 }
 .ticket:hover .ticket__stub { background: #c41a15; }
+.ticket__stub { cursor: pointer; }
 
 /* Bilhete usado: ao tocar para agendar, o bilhete fica em destaque e o canhoto se solta um pouco no picote */
 .ticket.is-used { translate: 0 -6px; }
