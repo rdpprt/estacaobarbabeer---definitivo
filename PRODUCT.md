@@ -33,13 +33,15 @@ Open: the owner will describe what makes Estação Barbabeer different from othe
 - Service durations (owner, 2026-10-20): Corte 30 min, Barba 30 min, Corte + barba 60 min, Corte infantil 30 min, Pezinho 10 min.
 - Address (owner, 2026-10-19): Estrada dos Menezes, 850 - Loja 114, Mutondo, São Gonçalo - RJ.
 - Phone and WhatsApp (owner, 2026-10-19): (21) 96704-7027. Instagram: @estacaobarbabeer.
-- Booking (owner, 2026-10-19): BarberCode on the hero button, WhatsApp everywhere else. The BarberCode page lists Barba, Corte e Barba, Corte de Cabelo Masculino and Corte de Cabelo Infantil.
+- Booking (owner, 2026-10-19): BarberCode on the hero button, WhatsApp everywhere else. The closing section also keeps a secondary text link to BarberCode, "ou escolha o horário online" (owner, 2026-10-22). Phone calls are not a booking path: the phone stays in Contato only (owner, 2026-10-22). The BarberCode page lists Barba, Corte e Barba, Corte de Cabelo Masculino and Corte de Cabelo Infantil.
 - Google reviews (owner's listing, read 2026-10-20): average 4,9 from 96 reviews (89×5★, 5×4★, 1×3★, 0×2★, 1×1★). The site quotes 4 five-star reviews verbatim, with names as first name plus first-surname initial (owner's rule): Jacielle S., Daniel P., Fernando S., Arthur F. A fifth 5★ review was left out because it includes a complaint, and quoting only its positive half would misrepresent it. Listing: https://www.google.com/maps?cid=16479059746991049617
 - Facade photo (owner, 2026-10-20): the lit shop sign on the blue storefront, used darkened behind the hero (`assets/fachada.webp`, 1280×720).
 - Gallery media (owner, 2026-10-20): 4 photos of cuts in the shop and 2 vertical videos (one of barbers at work in the salon, one of the drinks fridge and the shop sign), in `assets/galeria/` (photos and video stills as WebP; the videos re-encoded from the owner's 17 MB MP4s to 540×960 H.264 without audio, about 1.7 MB each, 2026-10-21).
 - Barbers (owner, 2026-10-21): Wanderson, Danillo and Pedro, in that order on the site, each with a photo in `assets/equipe/`.
+- Drinks (owner, 2026-10-22): the drink is free for every client who gets a cut. This backs the barbers headline "Decida quem vai pagar a sua bebida!" and the services line "Cortou com a gente, a bebida é por nossa conta." Which drinks are offered is still not supplied.
+- Pezinho (owner, 2026-10-22): not offered on BarberCode; it is booked by WhatsApp only.
 - Still not supplied, and not to be invented: the story of the shop.
-- Site data lives in `CONFIG` at the top of `js/main.js`: booking link, WhatsApp, phone, Instagram, address (which also generates the map), and hours. Gallery photos and videos are listed directly in `index.html`. Prices and service names are edited in `index.html`. Missing data shows as dashed "a preencher" placeholders.
+- Site data lives in `CONFIG` at the top of `js/main.js`: booking link, WhatsApp, phone, Instagram, address (which also generates the map), and hours. Gallery photos and videos are listed directly in `index.html`. Prices and service names are edited in `index.html`. Missing data shows as dashed "a preencher" placeholders. Since 2026-10-22 the same real values are also written into `index.html`: links, address, phone, Instagram, barber names and photos, and a plain-text line of hours. The site therefore works before the script loads, and without it. When a fact changes, update it in `CONFIG` (or the data attributes) and in the HTML.
 
 ## Brand Commitments
 

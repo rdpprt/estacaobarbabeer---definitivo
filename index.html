@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Teko:wght@600&family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
-  <script>document.documentElement.classList.add("js")</script>
+  <script>document.documentElement.classList.add("js");setTimeout(function(){if(!window.__siteReady)document.documentElement.classList.remove("js")},4000)</script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -36,6 +36,7 @@
     <symbol id="i-clipper" viewBox="0 0 24 24"><rect x="7.5" y="7" width="9" height="14" rx="3"/><path d="M7 3.5h10M8.5 3.5V7M11 3.5V7M13 3.5V7M15.5 3.5V7M10.5 11.5h3"/></symbol>
     <symbol id="i-child" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3.5"/><path d="M5.5 21c.6-4 3.1-6.5 6.5-6.5s5.9 2.5 6.5 6.5"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h3.5l1.7 4.5-2.2 1.4a11 11 0 0 0 7.1 7.1l1.4-2.2L21 15.5V19a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
     <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.3 6.7h.01"/></symbol>
     <symbol id="i-whats" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></symbol>
@@ -60,7 +61,7 @@
         <a href="#trabalho">Nosso trabalho</a>
         <a href="#contato">Contato</a>
       </nav>
-      <a class="btn btn--red btn--sm topbar__cta" data-whatsapp href="#contato">
+      <a class="btn btn--red btn--sm topbar__cta" data-whatsapp href="https://wa.me/5521967047027?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio%20na%20Esta%C3%A7%C3%A3o%20Barbabeer." target="_blank" rel="noopener">
         <svg class="ico"><use href="#i-whats"/></svg>Agendar pelo WhatsApp
       </a>
       <button class="topbar__toggle" type="button" aria-controls="menu" aria-expanded="false" data-menu-toggle>
@@ -86,11 +87,18 @@
           Combine o seu horário e venha fazer parte da família.
         </p>
         <div class="hero__actions">
-          <a class="btn btn--red" data-book href="#contato">
+          <a class="btn btn--red" data-book href="https://app.barbercode.com.br/client/estacao-barbabeer/new" target="_blank" rel="noopener">
             <svg class="ico"><use href="#i-calendar"/></svg>Agendar online
           </a>
           <a class="btn btn--ghost" href="#servicos">Ver serviços<svg class="ico"><use href="#i-arrow"/></svg></a>
         </div>
+        <p class="hero__note">Veja os horários livres e confirme pelo site, de terça a sábado.</p>
+        <!-- Prova na primeira tela: so fatos que ja estao na pagina (nota do Google e preco do corte) -->
+        <p class="hero__proof">
+          <a href="#avaliacoes"><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><strong>4,9</strong> · 96 avaliações<span class="hero__proof-src"> no Google</span></a>
+          <span class="hero__proof-sep" aria-hidden="true"></span>
+          <a href="#servicos">Corte <strong>R$ 40</strong></a>
+        </p>
       </div>
     </section>
 
@@ -100,7 +108,8 @@
       <div class="wrap">
         <div class="services__head">
           <h2 class="display" id="servicos-titulo" data-echo="Mais que um corte.">Mais que um corte.</h2>
-          <p>Toque em um serviço para agendar pelo WhatsApp.</p>
+          <p class="services__perk">Cortou com a gente, a bebida é por nossa conta.</p>
+          <p>Escolha um serviço: o WhatsApp abre com a mensagem pronta.</p>
         </div>
         <!-- Cada serviço é um bilhete de estação: o bilhete inteiro abre o WhatsApp com o serviço escrito -->
         <ul class="ticket-grid">
@@ -108,7 +117,7 @@
             <div class="ticket__card">
               <div class="ticket__body">
                 <p class="ticket__label"><svg class="ico"><use href="#i-scissors"/></svg>Bilhete nº 01</p>
-                <h3 class="ticket__name"><a class="ticket__link" data-service="Corte" href="#contato">Corte<span class="sr"> · agendar pelo WhatsApp</span></a></h3>
+                <h3 class="ticket__name"><a class="ticket__link" data-service="Corte" href="https://wa.me/5521967047027?text=Ol%C3%A1!%20Quero%20agendar%3A%20Corte%2C%20na%20Esta%C3%A7%C3%A3o%20Barbabeer." target="_blank" rel="noopener">Corte<span class="sr"> · agendar pelo WhatsApp</span></a></h3>
                 <p class="ticket__meta">Duração <strong>30 min</strong></p>
               </div>
               <div class="ticket__stub">
@@ -121,7 +130,7 @@
             <div class="ticket__card">
               <div class="ticket__body">
                 <p class="ticket__label"><svg class="ico"><use href="#i-mustache"/></svg>Bilhete nº 02</p>
-                <h3 class="ticket__name"><a class="ticket__link" data-service="Barba" href="#contato">Barba<span class="sr"> · agendar pelo WhatsApp</span></a></h3>
+                <h3 class="ticket__name"><a class="ticket__link" data-service="Barba" href="https://wa.me/5521967047027?text=Ol%C3%A1!%20Quero%20agendar%3A%20Barba%2C%20na%20Esta%C3%A7%C3%A3o%20Barbabeer." target="_blank" rel="noopener">Barba<span class="sr"> · agendar pelo WhatsApp</span></a></h3>
                 <p class="ticket__meta">Duração <strong>30 min</strong></p>
               </div>
               <div class="ticket__stub">
@@ -134,7 +143,7 @@
             <div class="ticket__card">
               <div class="ticket__body">
                 <p class="ticket__label"><svg class="ico"><use href="#i-combo"/></svg>Bilhete nº 03</p>
-                <h3 class="ticket__name"><a class="ticket__link" data-service="Corte + barba" href="#contato">Corte + barba<span class="sr"> · agendar pelo WhatsApp</span></a></h3>
+                <h3 class="ticket__name"><a class="ticket__link" data-service="Corte + barba" href="https://wa.me/5521967047027?text=Ol%C3%A1!%20Quero%20agendar%3A%20Corte%20%2B%20barba%2C%20na%20Esta%C3%A7%C3%A3o%20Barbabeer." target="_blank" rel="noopener">Corte + barba<span class="sr"> · agendar pelo WhatsApp</span></a></h3>
                 <p class="ticket__meta">Duração <strong>60 min</strong></p>
               </div>
               <div class="ticket__stub">
@@ -147,7 +156,7 @@
             <div class="ticket__card">
               <div class="ticket__body">
                 <p class="ticket__label"><svg class="ico"><use href="#i-child"/></svg>Bilhete nº 04</p>
-                <h3 class="ticket__name"><a class="ticket__link" data-service="Corte infantil" href="#contato">Corte infantil<span class="sr"> · agendar pelo WhatsApp</span></a></h3>
+                <h3 class="ticket__name"><a class="ticket__link" data-service="Corte infantil" href="https://wa.me/5521967047027?text=Ol%C3%A1!%20Quero%20agendar%3A%20Corte%20infantil%2C%20na%20Esta%C3%A7%C3%A3o%20Barbabeer." target="_blank" rel="noopener">Corte infantil<span class="sr"> · agendar pelo WhatsApp</span></a></h3>
                 <p class="ticket__meta">Duração <strong>30 min</strong></p>
               </div>
               <div class="ticket__stub">
@@ -160,8 +169,9 @@
             <div class="ticket__card">
               <div class="ticket__body">
                 <p class="ticket__label"><svg class="ico"><use href="#i-clipper"/></svg>Bilhete nº 05</p>
-                <h3 class="ticket__name"><a class="ticket__link" data-service="Pezinho" href="#contato">Pezinho<span class="sr"> · agendar pelo WhatsApp</span></a></h3>
+                <h3 class="ticket__name"><a class="ticket__link" data-service="Pezinho" href="https://wa.me/5521967047027?text=Ol%C3%A1!%20Quero%20agendar%3A%20Pezinho%2C%20na%20Esta%C3%A7%C3%A3o%20Barbabeer." target="_blank" rel="noopener">Pezinho<span class="sr"> · agendar pelo WhatsApp</span></a></h3>
                 <p class="ticket__meta">Duração <strong>10 min</strong></p>
+                <p class="ticket__only">Só pelo WhatsApp</p>
               </div>
               <div class="ticket__stub">
                 <p class="ticket__price">R$ 20</p>
@@ -170,11 +180,6 @@
             </div>
           </li>
         </ul>
-        <div class="services__cta">
-          <a class="btn btn--red" data-whatsapp href="#contato">
-            <svg class="ico"><use href="#i-whats"/></svg>Agendar pelo WhatsApp
-          </a>
-        </div>
       </div>
     </section>
 
@@ -234,13 +239,14 @@
       <div class="wrap">
         <div class="timetable__head">
           <h2 class="display" id="horarios-titulo" data-echo="Quadro de horários.">Quadro de horários.</h2>
+          <p class="board__status" data-board-status hidden></p>
         </div>
         <div class="board" data-board>
           <div class="board__row board__row--head" aria-hidden="true">
             <span>Dia</span><span>Abre</span><span>Fecha</span>
           </div>
           <!-- Edite os horários em js/main.js (CONFIG.horarios) -->
-          <div class="board__body" data-board-body role="table" aria-label="Horários de atendimento"></div>
+          <div class="board__body" data-board-body role="table" aria-label="Horários de atendimento"><p class="board__fallback">Terça a sexta, 10:00 às 20:00 · Sábado, 09:00 às 18:00 · Domingo e segunda, fechado</p></div>
         </div>
       </div>
     </section>
@@ -257,38 +263,38 @@
         </div>
         <ul class="crew" role="list">
           <li class="crew__item is-open" data-num="01" data-nome="Wanderson" data-foto="assets/equipe/wanderson.webp">
-            <button class="crew__toggle" type="button" aria-expanded="true" aria-controls="crew-1"><span class="sr">Ver o barbeiro nº 01</span></button>
-            <div class="crew__photo"><span class="crew__ph">Foto a preencher</span></div>
-            <span class="crew__num" aria-hidden="true"><span class="crew__num-n">01</span><span class="crew__num-name"></span></span>
+            <button class="crew__toggle" type="button" aria-expanded="true" aria-controls="crew-1"><span class="sr">Ver Wanderson</span></button>
+            <div class="crew__photo"><img src="assets/equipe/wanderson.webp" alt="Foto de Wanderson" width="707" height="1061" loading="lazy" decoding="async"></div>
+            <span class="crew__num" aria-hidden="true"><span class="crew__num-n">01</span><span class="crew__num-name">Wanderson</span></span>
             <div class="crew__info" id="crew-1">
               <p class="crew__tag">Barbeiro nº 01</p>
-              <h3 class="crew__name"><span class="tbd">Nome</span></h3>
-              <a class="btn btn--red crew__go" href="#contato">
-                <svg class="ico"><use href="#i-whats"/></svg><span class="crew__go-label">Agendar horário</span>
+              <h3 class="crew__name">Wanderson</h3>
+              <a class="btn btn--red crew__go" href="https://wa.me/5521967047027?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio%20com%20Wanderson%20na%20Esta%C3%A7%C3%A3o%20Barbabeer." target="_blank" rel="noopener">
+                <svg class="ico"><use href="#i-whats"/></svg><span class="crew__go-label">Agendar<span class="crew__go-name"> com Wanderson</span></span>
               </a>
             </div>
           </li>
           <li class="crew__item" data-num="02" data-nome="Danillo" data-foto="assets/equipe/danillo.webp">
-            <button class="crew__toggle" type="button" aria-expanded="false" aria-controls="crew-2"><span class="sr">Ver o barbeiro nº 02</span></button>
-            <div class="crew__photo"><span class="crew__ph">Foto a preencher</span></div>
-            <span class="crew__num" aria-hidden="true"><span class="crew__num-n">02</span><span class="crew__num-name"></span></span>
+            <button class="crew__toggle" type="button" aria-expanded="false" aria-controls="crew-2"><span class="sr">Ver Danillo</span></button>
+            <div class="crew__photo"><img src="assets/equipe/danillo.webp" alt="Foto de Danillo" width="900" height="1350" loading="lazy" decoding="async"></div>
+            <span class="crew__num" aria-hidden="true"><span class="crew__num-n">02</span><span class="crew__num-name">Danillo</span></span>
             <div class="crew__info" id="crew-2">
               <p class="crew__tag">Barbeiro nº 02</p>
-              <h3 class="crew__name"><span class="tbd">Nome</span></h3>
-              <a class="btn btn--red crew__go" href="#contato">
-                <svg class="ico"><use href="#i-whats"/></svg><span class="crew__go-label">Agendar horário</span>
+              <h3 class="crew__name">Danillo</h3>
+              <a class="btn btn--red crew__go" href="https://wa.me/5521967047027?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio%20com%20Danillo%20na%20Esta%C3%A7%C3%A3o%20Barbabeer." target="_blank" rel="noopener">
+                <svg class="ico"><use href="#i-whats"/></svg><span class="crew__go-label">Agendar<span class="crew__go-name"> com Danillo</span></span>
               </a>
             </div>
           </li>
           <li class="crew__item" data-num="03" data-nome="Pedro" data-foto="assets/equipe/pedro.webp">
-            <button class="crew__toggle" type="button" aria-expanded="false" aria-controls="crew-3"><span class="sr">Ver o barbeiro nº 03</span></button>
-            <div class="crew__photo"><span class="crew__ph">Foto a preencher</span></div>
-            <span class="crew__num" aria-hidden="true"><span class="crew__num-n">03</span><span class="crew__num-name"></span></span>
+            <button class="crew__toggle" type="button" aria-expanded="false" aria-controls="crew-3"><span class="sr">Ver Pedro</span></button>
+            <div class="crew__photo"><img src="assets/equipe/pedro.webp" alt="Foto de Pedro" width="900" height="1599" loading="lazy" decoding="async"></div>
+            <span class="crew__num" aria-hidden="true"><span class="crew__num-n">03</span><span class="crew__num-name">Pedro</span></span>
             <div class="crew__info" id="crew-3">
               <p class="crew__tag">Barbeiro nº 03</p>
-              <h3 class="crew__name"><span class="tbd">Nome</span></h3>
-              <a class="btn btn--red crew__go" href="#contato">
-                <svg class="ico"><use href="#i-whats"/></svg><span class="crew__go-label">Agendar horário</span>
+              <h3 class="crew__name">Pedro</h3>
+              <a class="btn btn--red crew__go" href="https://wa.me/5521967047027?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio%20com%20Pedro%20na%20Esta%C3%A7%C3%A3o%20Barbabeer." target="_blank" rel="noopener">
+                <svg class="ico"><use href="#i-whats"/></svg><span class="crew__go-label">Agendar<span class="crew__go-name"> com Pedro</span></span>
               </a>
             </div>
           </li>
@@ -301,18 +307,18 @@
       <div class="wrap">
         <div class="work__head">
           <h2 class="display" id="trabalho-titulo" data-echo="Nosso trabalho.">Nosso trabalho.</h2>
-          <a class="link" data-instagram href="#contato">
-            <svg class="ico"><use href="#i-insta"/></svg><span data-instagram-label>Siga no Instagram</span>
+          <a class="link" data-instagram href="https://www.instagram.com/estacaobarbabeer" target="_blank" rel="noopener">
+            <svg class="ico"><use href="#i-insta"/></svg><span data-instagram-label>@estacaobarbabeer</span>
           </a>
         </div>
         <ul class="work__grid">
           <!-- Fotos e vídeos da casa. Cada um leva ao Instagram. Os vídeos só carregam e tocam quando aparecem na tela (js/main.js). -->
-          <li class="frame frame--video"><a class="frame__link" data-instagram href="#contato" aria-label="Ver no Instagram: Vídeo: barbeiros atendendo clientes no salão da Estação Barbabeer"><video muted loop playsinline preload="none" poster="assets/galeria/video-1-capa.webp" aria-label="Vídeo: barbeiros atendendo clientes no salão da Estação Barbabeer" width="540" height="960"><source src="assets/galeria/video-1.mp4" type="video/mp4"></video><svg class="ico frame__insta" aria-hidden="true"><use href="#i-insta"/></svg></a></li>
-          <li class="frame"><a class="frame__link" data-instagram href="#contato" aria-label="Ver no Instagram: Barbeiro aparando a barba de um cliente deitado na cadeira"><img src="assets/galeria/foto-1.webp" alt="Barbeiro aparando a barba de um cliente deitado na cadeira" width="683" height="1024" loading="lazy" decoding="async"><svg class="ico frame__insta" aria-hidden="true"><use href="#i-insta"/></svg></a></li>
-          <li class="frame"><a class="frame__link" data-instagram href="#contato" aria-label="Ver no Instagram: Barbeiro borrifando água no corte degradê de um cliente"><img src="assets/galeria/foto-2.webp" alt="Barbeiro borrifando água no corte degradê de um cliente" width="683" height="1024" loading="lazy" decoding="async"><svg class="ico frame__insta" aria-hidden="true"><use href="#i-insta"/></svg></a></li>
-          <li class="frame"><a class="frame__link" data-instagram href="#contato" aria-label="Ver no Instagram: Cliente de barba cheia durante o acabamento do corte com pente e máquina"><img src="assets/galeria/foto-3.webp" alt="Cliente de barba cheia durante o acabamento do corte com pente e máquina" width="683" height="1024" loading="lazy" decoding="async"><svg class="ico frame__insta" aria-hidden="true"><use href="#i-insta"/></svg></a></li>
-          <li class="frame frame--video"><a class="frame__link" data-instagram href="#contato" aria-label="Ver no Instagram: Vídeo: a geladeira de bebidas e a placa da Estação Barbabeer na fachada"><video muted loop playsinline preload="none" poster="assets/galeria/video-2-capa.webp" aria-label="Vídeo: a geladeira de bebidas e a placa da Estação Barbabeer na fachada" width="540" height="960"><source src="assets/galeria/video-2.mp4" type="video/mp4"></video><svg class="ico frame__insta" aria-hidden="true"><use href="#i-insta"/></svg></a></li>
-          <li class="frame"><a class="frame__link" data-instagram href="#contato" aria-label="Ver no Instagram: Barbeiro passando a máquina no cabelo de um cliente de barba grisalha"><img src="assets/galeria/foto-4.webp" alt="Barbeiro passando a máquina no cabelo de um cliente de barba grisalha" width="683" height="1024" loading="lazy" decoding="async"><svg class="ico frame__insta" aria-hidden="true"><use href="#i-insta"/></svg></a></li>
+          <li class="frame frame--video"><a class="frame__link" data-instagram href="https://www.instagram.com/estacaobarbabeer" target="_blank" rel="noopener" aria-label="Ver no Instagram: Vídeo: barbeiros atendendo clientes no salão da Estação Barbabeer"><video muted loop playsinline preload="none" poster="assets/galeria/video-1-capa.webp" aria-label="Vídeo: barbeiros atendendo clientes no salão da Estação Barbabeer" width="540" height="960"><source src="assets/galeria/video-1.mp4" type="video/mp4"></video><svg class="ico frame__insta" aria-hidden="true"><use href="#i-insta"/></svg></a></li>
+          <li class="frame"><a class="frame__link" data-instagram href="https://www.instagram.com/estacaobarbabeer" target="_blank" rel="noopener" aria-label="Ver no Instagram: Barbeiro aparando a barba de um cliente deitado na cadeira"><img src="assets/galeria/foto-1.webp" alt="Barbeiro aparando a barba de um cliente deitado na cadeira" width="683" height="1024" loading="lazy" decoding="async"><svg class="ico frame__insta" aria-hidden="true"><use href="#i-insta"/></svg></a></li>
+          <li class="frame"><a class="frame__link" data-instagram href="https://www.instagram.com/estacaobarbabeer" target="_blank" rel="noopener" aria-label="Ver no Instagram: Barbeiro borrifando água no corte degradê de um cliente"><img src="assets/galeria/foto-2.webp" alt="Barbeiro borrifando água no corte degradê de um cliente" width="683" height="1024" loading="lazy" decoding="async"><svg class="ico frame__insta" aria-hidden="true"><use href="#i-insta"/></svg></a></li>
+          <li class="frame"><a class="frame__link" data-instagram href="https://www.instagram.com/estacaobarbabeer" target="_blank" rel="noopener" aria-label="Ver no Instagram: Cliente de barba cheia durante o acabamento do corte com pente e máquina"><img src="assets/galeria/foto-3.webp" alt="Cliente de barba cheia durante o acabamento do corte com pente e máquina" width="683" height="1024" loading="lazy" decoding="async"><svg class="ico frame__insta" aria-hidden="true"><use href="#i-insta"/></svg></a></li>
+          <li class="frame frame--video"><a class="frame__link" data-instagram href="https://www.instagram.com/estacaobarbabeer" target="_blank" rel="noopener" aria-label="Ver no Instagram: Vídeo: a geladeira de bebidas e a placa da Estação Barbabeer na fachada"><video muted loop playsinline preload="none" poster="assets/galeria/video-2-capa.webp" aria-label="Vídeo: a geladeira de bebidas e a placa da Estação Barbabeer na fachada" width="540" height="960"><source src="assets/galeria/video-2.mp4" type="video/mp4"></video><svg class="ico frame__insta" aria-hidden="true"><use href="#i-insta"/></svg></a></li>
+          <li class="frame"><a class="frame__link" data-instagram href="https://www.instagram.com/estacaobarbabeer" target="_blank" rel="noopener" aria-label="Ver no Instagram: Barbeiro passando a máquina no cabelo de um cliente de barba grisalha"><img src="assets/galeria/foto-4.webp" alt="Barbeiro passando a máquina no cabelo de um cliente de barba grisalha" width="683" height="1024" loading="lazy" decoding="async"><svg class="ico frame__insta" aria-hidden="true"><use href="#i-insta"/></svg></a></li>
         </ul>
       </div>
     </section>
@@ -325,23 +331,25 @@
           <ul class="facts">
             <li>
               <svg class="ico"><use href="#i-pin"/></svg>
-              <div><strong>Endereço</strong><span class="tbd" data-address>Rua, número, bairro, cidade</span></div>
+              <div><strong>Endereço</strong><span data-address>Estrada dos Menezes, 850 - Loja 114, Mutondo, São Gonçalo - RJ</span>
+                <a class="facts__go" href="https://www.google.com/maps/dir/?api=1&amp;destination=Estrada%20dos%20Menezes%2C%20850%20-%20Loja%20114%2C%20Mutondo%2C%20S%C3%A3o%20Gon%C3%A7alo%20-%20RJ" target="_blank" rel="noopener">Como chegar<svg class="ico"><use href="#i-arrow"/></svg></a></div>
+            </li>
+            <li>
+              <svg class="ico"><use href="#i-clock"/></svg>
+              <div><strong>Horário</strong><span>Terça a sexta, <span class="nowrap">10:00 às 20:00</span><br>Sábado, <span class="nowrap">09:00 às 18:00</span></span></div>
             </li>
             <li>
               <svg class="ico"><use href="#i-phone"/></svg>
-              <div><strong>Telefone e WhatsApp</strong><span class="tbd" data-phone>(00) 00000-0000</span></div>
+              <div><strong>Telefone e WhatsApp</strong><a href="tel:+5521967047027" data-phone>(21) 96704-7027</a></div>
             </li>
             <li>
               <svg class="ico"><use href="#i-insta"/></svg>
-              <div><strong>Instagram</strong><span class="tbd" data-instagram-handle>@perfil</span></div>
+              <div><strong>Instagram</strong><a data-instagram-handle href="https://www.instagram.com/estacaobarbabeer" target="_blank" rel="noopener">@estacaobarbabeer</a></div>
             </li>
           </ul>
         </div>
         <div class="visit__map" data-map>
-          <div class="map-empty">
-            <svg class="ico"><use href="#i-pin"/></svg>
-            <p>O mapa aparece aqui quando o endereço for preenchido.</p>
-          </div>
+          <iframe title="Mapa: Estrada dos Menezes, 850 - Loja 114, Mutondo, São Gonçalo - RJ" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Estrada%20dos%20Menezes%2C%20850%20-%20Loja%20114%2C%20Mutondo%2C%20S%C3%A3o%20Gon%C3%A7alo%20-%20RJ&amp;output=embed"></iframe>
         </div>
       </div>
     </section>
@@ -351,11 +359,11 @@
       <img class="closing__bg" src="assets/cadeiras-fundo.webp" width="1280" height="720" alt="" loading="lazy" decoding="async">
       <div class="wrap closing__inner">
         <h2 class="display closing__title" id="final-titulo" data-echo="Sua cadeira está esperando.">Sua cadeira está esperando.</h2>
-        <p>Mande uma mensagem no WhatsApp e combine seu horário.</p>
-        <a class="btn btn--red btn--lg" data-whatsapp href="#contato">
+        <p>Mande uma mensagem no WhatsApp e combine seu horário. Atendemos de terça a sábado.</p>
+        <a class="btn btn--red btn--lg" data-whatsapp href="https://wa.me/5521967047027?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio%20na%20Esta%C3%A7%C3%A3o%20Barbabeer." target="_blank" rel="noopener">
           <svg class="ico"><use href="#i-whats"/></svg>Agendar pelo WhatsApp
         </a>
-        <a class="closing__alt" data-book href="#contato">ou agende online</a>
+        <a class="closing__alt" data-book href="https://app.barbercode.com.br/client/estacao-barbabeer/new" target="_blank" rel="noopener">ou escolha o horário online</a>
       </div>
     </section>
   </main>
@@ -370,11 +378,11 @@
         <a href="#trabalho">Nosso trabalho</a>
         <a href="#contato">Contato</a>
       </nav>
-      <p>© <span data-year></span> Estação Barbabeer. Todos os direitos reservados.</p>
+      <p>© <span data-year>2026</span> Estação Barbabeer. Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <a class="float-whats is-away" data-whatsapp href="#contato" aria-label="Agendar pelo WhatsApp">
+  <a class="float-whats is-away" inert data-whatsapp href="https://wa.me/5521967047027?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio%20na%20Esta%C3%A7%C3%A3o%20Barbabeer." target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp">
     <svg class="ico"><use href="#i-whats"/></svg>
   </a>
 

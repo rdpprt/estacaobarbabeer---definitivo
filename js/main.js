@@ -5,6 +5,8 @@
  *  "a preencher" no lugar.
  * ============================================================
  */
+window.__siteReady = true; // avisa o <head> que o script chegou
+
 const CONFIG = {
   // Página de agendamento online (botão principal do topo)
   agendamento: "https://app.barbercode.com.br/client/estacao-barbabeer/new",
@@ -96,7 +98,8 @@ document.querySelectorAll(".ticket").forEach((t) => {
 const crew = [...document.querySelectorAll(".crew__item")];
 crew.forEach((item) => {
   const { num, nome, foto } = item.dataset;
-  if (foto) {
+  // a foto ja vem no HTML (com largura e altura); so cria se faltar
+  if (foto && !item.querySelector(".crew__photo img")) {
     const img = document.createElement("img");
     img.src = foto;
     img.alt = `Foto de ${nome || "barbeiro nº " + num}`;
@@ -107,7 +110,8 @@ crew.forEach((item) => {
   if (nome) {
     item.querySelector(".crew__name").textContent = nome;
     item.querySelector(".crew__num-name").textContent = nome;
-    item.querySelector(".crew__go-label").textContent = `Agendar com ${nome}`;
+    // em telas estreitas so "Agendar" aparece; o nome ja esta logo acima, em letra grande
+    item.querySelector(".crew__go-label").innerHTML = `Agendar<span class="crew__go-name"> com ${nome}</span>`;
     item.querySelector(".crew__toggle .sr").textContent = `Ver ${nome}`;
   }
   const go = item.querySelector(".crew__go");
@@ -158,7 +162,8 @@ if (CONFIG.endereco) {
     .querySelectorAll("[data-address]")
     .forEach((el) => fill(el, CONFIG.endereco));
   const map = document.querySelector("[data-map]");
-  if (map) {
+  // o mapa ja vem no HTML; so monta se faltar
+  if (map && !map.querySelector("iframe")) {
     const q = encodeURIComponent(CONFIG.endereco);
     map.innerHTML = `<iframe title="Mapa: ${CONFIG.endereco}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${q}&output=embed"></iframe>`;
   }
@@ -213,7 +218,8 @@ function flaps(text, extraClass = "") {
   return wrap;
 }
 
-// Começa na segunda-feira, como um quadro de semana
+// Começa na segunda-feira, como um quadro de semana (tira o texto simples do HTML)
+body.replaceChildren();
 const order = [1, 2, 3, 4, 5, 6, 0];
 order.forEach((i, r) => {
   rowIdx = r;
@@ -255,6 +261,35 @@ order.forEach((i, r) => {
   body.append(row);
 });
 
+/* Aberto agora: uma linha acima do quadro, calculada com os horários do CONFIG
+   (pelo relógio de quem visita, que em geral está no mesmo fuso da barbearia) */
+const status = document.querySelector("[data-board-status]");
+if (status) {
+  const now = new Date();
+  const mins = (t) => {
+    const [h, m] = t.split(":").map(Number);
+    return h * 60 + m;
+  };
+  const cur = now.getHours() * 60 + now.getMinutes();
+  const hoje = CONFIG.horarios[today].h;
+  const open = Boolean(hoje && !hoje.fechado && cur >= mins(hoje.abre) && cur < mins(hoje.fecha));
+  let text = open ? `Aberto agora · fecha às ${hoje.fecha}` : "";
+  // fechado: procura a próxima abertura (mais tarde hoje ou nos próximos dias)
+  for (let k = 0; !open && k < 7; k++) {
+    const dia = (today + k) % 7;
+    const h = CONFIG.horarios[dia].h;
+    if (!h || h.fechado || (k === 0 && cur >= mins(h.abre))) continue;
+    const quando = k === 0 ? "hoje" : k === 1 ? "amanhã" : CONFIG.horarios[dia].dia.toLowerCase();
+    text = `Fechado · abre ${quando} às ${h.abre}`;
+    break;
+  }
+  if (text) {
+    status.textContent = text;
+    status.classList.toggle("is-open", open);
+    status.hidden = false;
+  }
+}
+
 /* Movimento ao rolar: blocos sobem, titulos entram com zoom, fotos se revelam,
    e o quadro vira as plaquinhas quando entra na tela */
 if ("IntersectionObserver" in window && !reduceMotion) {
@@ -265,7 +300,6 @@ if ("IntersectionObserver" in window && !reduceMotion) {
     ".rating",
     ".reviews__actions",
     ".services__head p",
-    ".services__cta",
     ".board",
     ".team__head p",
     ".crew",
@@ -398,6 +432,8 @@ if (carTrack && carNav) {
     if (!run && timer) { clearInterval(timer); timer = null; }
   };
   carTrack.addEventListener("pointerdown", stopAuto);
+  // teclado e leitor de tela também param a troca automática
+  carTrack.closest(".reviews").addEventListener("focusin", stopAuto);
   carTrack.addEventListener("scroll", mark, { passive: true });
   new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; syncAuto(); }, { threshold: 0.6 }).observe(carTrack);
   const setup = () => {
@@ -409,12 +445,42 @@ if (carTrack && carNav) {
   setup();
 }
 
-/* Topo: esconde ao descer, volta ao subir. Botão flutuante some perto do fim. */
+/* Topo: esconde ao descer, volta ao subir. Botão flutuante some perto do fim
+   e sempre que ficaria por cima de outro botão, link, bilhete ou do mapa.
+   No computador ele só aparece depois dos serviços e enquanto o menu de cima
+   (que tem o mesmo botão) estiver escondido. */
 const topbar = document.querySelector("[data-topbar]");
 const floatBtn = document.querySelector(".float-whats");
 const closing = document.querySelector(".closing");
+const services = document.querySelector("#servicos");
+const wide = matchMedia("(min-width: 761px)");
 let lastY = window.scrollY;
 let ticking = false;
+// so alvos pequenos, que o botao esconderia por inteiro: botoes, links e o canhoto do preco.
+// Fotos, galeria e mapa sao grandes e continuam tocaveis em volta do botao.
+const tappables = [
+  ...document.querySelectorAll(
+    "main a, main button, .ticket__stub, main .display, .services__head p, .team__head p, .board__status",
+  ),
+].filter(
+  (el) => !el.matches(".crew__toggle, .frame__link"),
+);
+const coversTappable = () => {
+  if (getComputedStyle(floatBtn).display === "none") return false;
+  // area do botao parado (sem o deslocamento de quando esta escondido), com 8px de folga
+  const cs = getComputedStyle(floatBtn);
+  const size = floatBtn.offsetWidth;
+  const right = innerWidth - parseFloat(cs.right) + 8;
+  const bottom = innerHeight - parseFloat(cs.bottom) + 8;
+  const left = right - size - 16;
+  const top = bottom - size - 16;
+  return tappables.some((el) => {
+    const r = el.getBoundingClientRect();
+    return r.width > 0 && r.left < right && r.right > left && r.top < bottom && r.bottom > top;
+  });
+};
+// pulsa so na primeira vez que aparece, para nao piscar a cada vez que sai da frente
+floatBtn.addEventListener("animationend", () => floatBtn.classList.add("did-pulse"), { once: true });
 // A logo da barra só aparece depois que a logo grande do início sai de baixo da barra
 const heroLogo = document.querySelector(".hero__logo");
 const syncBrand = () => {
@@ -433,10 +499,14 @@ window.addEventListener(
       const menuOpen = toggle.getAttribute("aria-expanded") === "true";
       topbar.classList.toggle("is-hidden", !menuOpen && y > lastY && y > 120);
       const closingTop = closing.getBoundingClientRect().top;
-      floatBtn.classList.toggle(
-        "is-away",
-        y < 300 || closingTop < window.innerHeight,
-      );
+      const topbarShown = !topbar.classList.contains("is-hidden");
+      const beforeEnd = services.getBoundingClientRect().bottom > window.innerHeight;
+      const away = wide.matches
+        ? beforeEnd || topbarShown || closingTop < window.innerHeight || coversTappable()
+        : y < 300 || closingTop < window.innerHeight || coversTappable();
+      floatBtn.classList.toggle("is-away", away);
+      // escondido, ele sai da ordem do teclado e do leitor de tela
+      floatBtn.inert = away;
       lastY = y;
       ticking = false;
     });
