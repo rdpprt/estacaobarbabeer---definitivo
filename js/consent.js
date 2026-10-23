@@ -1,11 +1,17 @@
 /*
  * ============================================================
  *  COOKIES E GOOGLE TAG MANAGER (LGPD)
- *  Coloque aqui o ID do contêiner do GTM (formato "GTM-XXXXXXX").
- *  Vazio ("") = o GTM não carrega.
+ *
+ *  >>> CONTÊINERES DO GTM: um ID por linha, entre aspas, com vírgula no fim. <<<
+ *  Formato "GTM-XXXXXXX". Linha vazia ("") é ignorada.
+ *  Todos respeitam o aviso de cookies: nada é gravado antes de a pessoa aceitar.
  * ============================================================
  */
-const GTM_ID = "";
+const GTM_IDS = [
+  "", // contêiner 1: cole o ID aqui, ex. "GTM-ABC1234"
+  "", // contêiner 2 (opcional)
+];
+/* ============================================================ */
 
 /* Consent Mode v2: tudo começa NEGADO. Nada de medição ou anúncio grava cookie
    antes de a pessoa aceitar no aviso. */
@@ -42,14 +48,15 @@ const applyChoice = (choice) => {
 };
 if (readChoice()) applyChoice(readChoice());
 
-/* Carrega o GTM (ele respeita o consentimento acima) */
-if (/^GTM-[A-Z0-9]+$/.test(GTM_ID)) {
-  dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+/* Carrega cada contêiner preenchido (todos respeitam o consentimento acima) */
+const gtmValidos = GTM_IDS.map((id) => id.trim()).filter((id) => /^GTM-[A-Z0-9]+$/.test(id));
+if (gtmValidos.length) dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+gtmValidos.forEach((id) => {
   const s = document.createElement("script");
   s.async = true;
-  s.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
+  s.src = `https://www.googletagmanager.com/gtm.js?id=${id}`;
   document.head.append(s);
-}
+});
 
 /* Aviso de cookies: aparece até a pessoa escolher; o rodapé reabre */
 document.addEventListener("DOMContentLoaded", () => {
