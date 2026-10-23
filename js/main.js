@@ -81,7 +81,22 @@ if (CONFIG.whatsapp) {
 
 /* Bilhete usado: ao tocar para agendar, o canhoto se solta (o WhatsApp abre em nova aba) */
 document.querySelectorAll("[data-service]").forEach((a) => {
-  a.addEventListener("click", () => a.closest(".ticket")?.classList.add("is-used"));
+  a.addEventListener("click", (e) => {
+    const ticket = a.closest(".ticket");
+    ticket?.classList.add("is-used");
+    // Ctrl/Cmd/Shift/botão do meio e quem desativa animações: abre na hora, como um link comum
+    if (reduceMotion || e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
+    // Dá tempo de ver o canhoto rasgar antes de a aba do WhatsApp cobrir o site
+    e.preventDefault();
+    if (a.dataset.opening) return; // toque duplo não abre duas abas
+    a.dataset.opening = "1";
+    setTimeout(() => {
+      delete a.dataset.opening;
+      const win = window.open(a.href, "_blank");
+      if (win) win.opener = null;
+      else location.href = a.href; // navegador bloqueou a nova aba: abre na mesma
+    }, 650);
+  });
 });
 // Quando a pessoa volta para o site, o canhoto se cola de novo (com a mesma mola, ao contrário)
 const restoreTickets = () => {
