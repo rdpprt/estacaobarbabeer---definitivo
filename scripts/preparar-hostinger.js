@@ -57,35 +57,8 @@ for (const f of ["index.html", "politica-de-privacidade.html", "css/style.css", 
 }
 for (const rel of usados) copiar(rel);
 
-// .htaccess: força HTTPS e deixa o navegador guardar as imagens e vídeos
-fs.writeFileSync(
-  path.join(destino, ".htaccess"),
-  `# Gerado por scripts/preparar-hostinger.js
-RewriteEngine On
-# www -> sem www (um endereco so para o Google)
-RewriteCond %{HTTP_HOST} ^www\\.(.+)$ [NC]
-RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
-# http -> https
-RewriteCond %{HTTPS} off
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-<IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresByType image/webp "access plus 30 days"
-  ExpiresByType image/png "access plus 30 days"
-  ExpiresByType image/jpeg "access plus 30 days"
-  ExpiresByType video/mp4 "access plus 30 days"
-  ExpiresByType font/woff2 "access plus 1 year"
-  ExpiresByType text/css "access plus 1 day"
-  ExpiresByType application/javascript "access plus 1 day"
-  ExpiresByType text/html "access plus 0 seconds"
-</IfModule>
-
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml
-</IfModule>
-`
-);
+// .htaccess: o mesmo da raiz do repositório (HTTPS, sem www, cache, arquivos internos bloqueados)
+fs.copyFileSync(path.join(raiz, ".htaccess"), path.join(destino, ".htaccess"));
 
 const total = [...usados].filter((u) => !u.startsWith("assets/fonts/")).length + 8 + fs.readdirSync(path.join(raiz, "assets/fonts")).length;
 // Zip com barras normais nos caminhos (o extrator da Hostinger roda em Linux)
