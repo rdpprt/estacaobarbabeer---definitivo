@@ -3,27 +3,154 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Estação Barbabeer · Barber Shop</title>
-  <meta name="description" content="Estação Barbabeer, barbearia no Mutondo, em São Gonçalo. Corte, barba e corte infantil. Agende online ou pelo WhatsApp.">
-  <meta property="og:title" content="Estação Barbabeer · Barber Shop">
-  <meta property="og:description" content="Barbearia no Mutondo, em São Gonçalo. Agende online ou pelo WhatsApp.">
+  <title>Estação Barbabeer · Barbearia no Mutondo, São Gonçalo</title>
+  <meta name="description" content="Barbearia no Mutondo, em São Gonçalo (RJ). Corte R$ 40, barba, corte infantil e pezinho, com a bebida por conta da casa. Agende online ou pelo WhatsApp.">
+  <meta property="og:title" content="Estação Barbabeer · Barbearia no Mutondo, São Gonçalo">
+  <meta property="og:site_name" content="Estação Barbabeer">
+  <meta property="og:description" content="Barbearia no Mutondo, em São Gonçalo. Corte, barba e a bebida por conta da casa. Agende online ou pelo WhatsApp.">
   <meta property="og:type" content="website">
   <!-- Imagem da prévia ao compartilhar o link (WhatsApp, Facebook): precisa do endereço completo -->
-  <meta property="og:url" content="https://rdpprt.github.io/estacaobarbabeer---definitivo/">
-  <meta property="og:image" content="https://rdpprt.github.io/estacaobarbabeer---definitivo/assets/compartilhar.jpg">
+  <link rel="canonical" href="https://estacaobarbabeer.com/">
+  <meta property="og:url" content="https://estacaobarbabeer.com/">
+  <meta property="og:image" content="https://estacaobarbabeer.com/assets/compartilhar.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Logo da Estação Barbabeer sobre a fachada da barbearia">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://rdpprt.github.io/estacaobarbabeer---definitivo/assets/compartilhar.jpg">
+  <meta name="twitter:image" content="https://estacaobarbabeer.com/assets/compartilhar.jpg">
   <meta name="theme-color" content="#0a0f22">
+  <!-- Dados estruturados (Schema.org) para a busca local do Google. Atualize junto com preços e horários. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "@id": "https://estacaobarbabeer.com/#barbearia",
+    "name": "Estação Barbabeer",
+    "description": "Barbearia no Mutondo, em São Gonçalo (RJ). Corte, barba, corte infantil e pezinho, com a bebida por conta da casa para quem corta.",
+    "url": "https://estacaobarbabeer.com/",
+    "image": "https://estacaobarbabeer.com/assets/compartilhar.jpg",
+    "logo": "https://estacaobarbabeer.com/assets/logo-hd.webp",
+    "telephone": "+55 21 96704-7027",
+    "priceRange": "R$ 20–70",
+    "currenciesAccepted": "BRL",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Estrada dos Menezes, 850 - Loja 114",
+      "addressLocality": "São Gonçalo",
+      "addressRegion": "RJ",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -22.8249953,
+      "longitude": -43.0105896
+    },
+    "hasMap": "https://www.google.com/maps?cid=16479059746991049617",
+    "areaServed": {
+      "@type": "Place",
+      "name": "Mutondo, São Gonçalo - RJ"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "10:00",
+        "closes": "20:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/estacaobarbabeer",
+      "https://www.google.com/maps?cid=16479059746991049617"
+    ],
+    "potentialAction": {
+      "@type": "ReserveAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://app.barbercode.com.br/client/estacao-barbabeer/new"
+      }
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Serviços",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "price": "40",
+          "priceCurrency": "BRL",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Corte",
+            "serviceType": "Barbearia",
+            "duration": "PT30M"
+          }
+        },
+        {
+          "@type": "Offer",
+          "price": "40",
+          "priceCurrency": "BRL",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Barba",
+            "serviceType": "Barbearia",
+            "duration": "PT30M"
+          }
+        },
+        {
+          "@type": "Offer",
+          "price": "70",
+          "priceCurrency": "BRL",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Corte + barba",
+            "serviceType": "Barbearia",
+            "duration": "PT60M"
+          }
+        },
+        {
+          "@type": "Offer",
+          "price": "40",
+          "priceCurrency": "BRL",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Corte infantil",
+            "serviceType": "Barbearia",
+            "duration": "PT30M"
+          }
+        },
+        {
+          "@type": "Offer",
+          "price": "20",
+          "priceCurrency": "BRL",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Pezinho",
+            "serviceType": "Barbearia",
+            "duration": "PT10M"
+          }
+        }
+      ]
+    }
+  }
+  </script>
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@600&family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/teko-600-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script>document.documentElement.classList.add("js");setTimeout(function(){if(!window.__siteReady)document.documentElement.classList.remove("js")},4000)</script>
+  <!-- Cookies (LGPD) + Google Tag Manager: consentimento negado até a pessoa aceitar -->
+  <script src="js/consent.js"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -378,9 +505,25 @@
         <a href="#trabalho">Nosso trabalho</a>
         <a href="#contato">Contato</a>
       </nav>
+      <p class="footer__legal">
+        <a href="politica-de-privacidade.html">Política de privacidade</a>
+        <button class="footer__cookies" type="button" data-cookies-open>Preferências de cookies</button>
+      </p>
       <p>© <span data-year>2026</span> Estação Barbabeer. Todos os direitos reservados.</p>
     </div>
   </footer>
+
+  <!-- Aviso de cookies (LGPD): aceitar e recusar com o mesmo peso -->
+  <section class="cookies" data-cookies hidden aria-labelledby="cookies-titulo">
+    <div class="cookies__text">
+      <h2 class="cookies__title" id="cookies-titulo">Cookies</h2>
+      <p>Usamos cookies para medir as visitas e melhorar o site. Você escolhe se aceita. <a href="politica-de-privacidade.html">Política de privacidade</a></p>
+    </div>
+    <div class="cookies__actions">
+      <button class="btn btn--ghost btn--sm" type="button" data-cookies-choice="recusado">Recusar</button>
+      <button class="btn btn--red btn--sm" type="button" data-cookies-choice="aceito">Aceitar</button>
+    </div>
+  </section>
 
   <a class="float-whats is-away" inert data-whatsapp href="https://wa.me/5521967047027?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio%20na%20Esta%C3%A7%C3%A3o%20Barbabeer." target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp">
     <svg class="ico"><use href="#i-whats"/></svg>

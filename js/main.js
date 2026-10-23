@@ -154,6 +154,21 @@ crew.forEach((item) => {
   });
 });
 
+/* Medição (GTM): cada clique de agendamento vira um evento "agendamento" no dataLayer.
+   Só é enviado a alguma ferramenta se a pessoa aceitou os cookies (Consent Mode, em js/consent.js). */
+document.addEventListener("click", (e) => {
+  const a = e.target.closest("a[href*=\"wa.me\"], a[href*=\"barbercode\"]");
+  if (!a || !window.dataLayer) return;
+  const item = a.closest(".crew__item");
+  window.dataLayer.push({
+    event: "agendamento",
+    canal: a.href.includes("barbercode") ? "online" : "whatsapp",
+    origem: a.closest("section, header")?.id || (a.classList.contains("float-whats") ? "flutuante" : "topo"),
+    servico: a.dataset.service || "",
+    barbeiro: item?.dataset.nome || "",
+  });
+});
+
 /* Contato */
 if (CONFIG.telefone) {
   document.querySelectorAll("[data-phone]").forEach((el) => {

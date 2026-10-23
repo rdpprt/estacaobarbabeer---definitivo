@@ -256,8 +256,10 @@ A blue-black ladder with white ink, soft tints for secondary text, and the logo'
 
 ## Typography
 
-**Display Font:** Teko, weight 600 (with Arial Narrow, sans-serif), from Google Fonts
-**Body Font:** Archivo, variable width and weight (with system-ui, sans-serif), from the same Google Fonts request
+**Display Font:** Teko, weight 600 (with Arial Narrow, sans-serif), self-hosted
+**Body Font:** Archivo, variable width and weight (with system-ui, sans-serif), self-hosted.
+
+**Delivery (LGPD, 2026-10-23):** both faces are served from `assets/fonts/` as woff2 latin and latin-ext subsets under the SIL Open Font License. They are declared with `@font-face` at the top of `css/style.css`, use `font-display: swap`, and the two latin files are preloaded. No request goes to Google Fonts, so no visitor IP reaches a third party for typography.
 
 **Character:** Teko is a tall, condensed, squared-off sans, licensed under the SIL Open Font License, and the owner's choice of display face. Their first pick, Schluber, was dropped because it lacks Portuguese accents and the "$" sign and is licensed for personal use only. Archivo, widened on its width axis, stands in for the reference's extended grotesk. The result is a tall, compact headline over a wide, steady sans.
 
@@ -456,6 +458,13 @@ The page works without its script (harden, 2026-10-22).
 **Carousel autoplay:** it stops for good on pointer down and on any focus inside the reviews section (WCAG 2.2.2).
 
 **Long names:** barber names, open or closed, clip with an ellipsis inside their tile instead of overflowing.
+
+## Cookies and Measurement (LGPD)
+- **Consent first.** `js/consent.js` loads in the head before anything else. It sets Google Consent Mode v2 defaults to denied for ad_storage, ad_user_data, ad_personalization and analytics_storage. It re-applies a stored choice (`localStorage` key `barbabeer-cookies`, either "aceito" or "recusado"), then loads GTM only when `GTM_ID` holds a real `GTM-` ID. There is no GTM `<noscript>` iframe, so without JavaScript nothing is tracked.
+- **Banner.** A fixed Navy Deep panel at the bottom: 16px radius, a hairline border at 12% white, and the card drop. It is up to 44rem wide and centred, and 0.75rem from the edges on phones. It holds a Teko "COOKIES" title, one Navy Mist sentence with a link to the policy, and two buttons of equal size and weight in the ANPD sense: ghost "Recusar" and red "Aceitar", each at least 44px tall and full width side by side on phones. It shows until a choice is made. While it is open the floating WhatsApp button hides.
+- **Revisit.** The footer has a "Política de privacidade" link and a "Preferências de cookies" button that reopens the banner. The policy page has the same button.
+- **Policy page.** `politica-de-privacidade.html` reuses the site CSS: a Navy Ink back bar, then a 44rem column on Navy Deep with a Display h1, Teko h2s, and Navy Mist body at 1.65 line height. Missing facts (CNPJ, e-mail) are dashed `.tbd` chips.
+- **Events.** Every booking click pushes `{event: "agendamento", canal: "whatsapp" | "online", origem, servico, barbeiro}` to the dataLayer. GTM decides what to send, and only within the consent state.
 
 ## Do's and Don'ts
 

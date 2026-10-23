@@ -6,3 +6,7 @@
 # Capturas de revisão (geradas durante o desenvolvimento)
 .impeccable/review/
 .impeccable/live/
+
+# Pasta gerada para subir na Hostinger
+para-hostinger/
+estacaobarbabeer-hostinger.zip

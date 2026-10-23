@@ -40,6 +40,15 @@ Open: the owner will describe what makes Estação Barbabeer different from othe
 - Barbers (owner, 2026-10-21): Wanderson, Danillo and Pedro, in that order on the site, each with a photo in `assets/equipe/`.
 - Drinks (owner, 2026-10-22): the drink is free for every client who gets a cut. This backs the barbers headline "Decida quem vai pagar a sua bebida!" and the services line "Cortou com a gente, a bebida é por nossa conta." Which drinks are offered is still not supplied.
 - Pezinho (owner, 2026-10-22): not offered on BarberCode; it is booked by WhatsApp only.
+- LGPD and measurement (2026-10-23):
+  - The site was built by an agency for the shop. The shop (Estação Barbabeer) is the data controller; the agency acts as processor if it manages GTM and Analytics.
+  - The agency chose prior consent (opt-in) over implied consent or legitimate interest. Tracking cookies stay denied until the visitor taps "Aceitar".
+  - Google Consent Mode v2 runs in advanced mode: GTM loads with every purpose denied and only sends cookieless pings until the visitor consents.
+  - CNPJ (owner, 2026-10-23): 25.236.707/0001-22. The contact channel for data requests is the shop's WhatsApp.
+  - Fonts are self-hosted (`assets/fonts/`), so Google Fonts is not a third party and is not listed in the privacy policy (2026-10-23).
+  - SEO (2026-10-23): title and meta description target "barbearia Mutondo São Gonçalo". A HairSalon JSON-LD in index.html carries the address, geo, phone, hours, services with prices, Instagram, the Maps listing and the BarberCode reserve action; keep it in sync with prices and hours. It has no aggregateRating, because Google ignores self-served review stars. robots.txt and sitemap.xml are in the root; the privacy page is noindex.
+  - Hosting (2026-10-23): Hostinger, on the shop's own domain https://estacaobarbabeer.com (canonical, without www; .htaccess redirects www and http to it), not GitHub Pages. `node scripts/preparar-hostinger.js https://<domínio>` builds `para-hostinger/` (git-ignored) with only the files the site uses. It rewrites the share URLs to the domain and adds an `.htaccess` that forces HTTPS and sets cache headers. The contents of that folder go into `public_html`.
+  - Still to be supplied: the GTM container ID, and the agency's name if it is to be named as processor.
 - Still not supplied, and not to be invented: the story of the shop.
 - Site data lives in `CONFIG` at the top of `js/main.js`: booking link, WhatsApp, phone, Instagram, address (which also generates the map), and hours. Gallery photos and videos are listed directly in `index.html`. Prices and service names are edited in `index.html`. Missing data shows as dashed "a preencher" placeholders. Since 2026-10-22 the same real values are also written into `index.html`: links, address, phone, Instagram, barber names and photos, and a plain-text line of hours. The site therefore works before the script loads, and without it. When a fact changes, update it in `CONFIG` (or the data attributes) and in the HTML.
 
